@@ -15,7 +15,7 @@ class EventController extends Controller
             return Event::where('is_published', true)
                 ->orderBy('order', 'asc')
                 ->get()
-                ->map(function ($ev) {
+                ->map(function (Event $ev) {
                     return [
                         'id' => $ev->id,
                         'title' => $ev->getTranslations('title'),

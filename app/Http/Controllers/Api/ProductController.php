@@ -15,7 +15,7 @@ class ProductController extends Controller
             return Product::where('is_available', true)
                 ->orderBy('order', 'asc')
                 ->get()
-                ->map(function ($p) {
+                ->map(function (Product $p) {
                     return [
                         'id' => $p->id,
                         'title' => $p->getTranslations('title'),

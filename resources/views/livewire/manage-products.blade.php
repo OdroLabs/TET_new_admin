@@ -37,13 +37,15 @@
                     <input type="text" wire:model="productState.title.si" placeholder="සිංහල මාතෘකාව" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-pink-400">
                     <input type="text" wire:model="productState.title.ta" placeholder="தமிழ் தலைப்பு" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none focus:ring-1 focus:ring-pink-400">
                 </div>
+                @error('productState.title.en') <span class="text-[10px] text-red-500 font-bold">{{ $message }}</span> @enderror
             </div>
 
             <!-- Price, Currency, Specs, Badge, Icon -->
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <div>
-                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Price (LKR)</label>
+                    <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Price</label>
                     <input type="number" step="0.50" wire:model="productState.price" class="w-full border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none font-bold text-sky-950">
+                    @error('productState.price') <span class="text-[10px] text-red-500 font-bold">{{ $message }}</span> @enderror
                 </div>
                 <div>
                     <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Currency</label>
@@ -77,20 +79,50 @@
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-slate-100">
                 <div>
                     <label class="text-[9px] font-bold uppercase text-slate-400 block mb-1">Product Photo (Optional)</label>
+                    
+                    @if ($productImage)
+                        <div class="mb-2">
+                            <span class="text-[8px] text-pink-600 font-bold block mb-1">New Image Preview:</span>
+                            <img src="{{ $productImage->temporaryUrl() }}" class="w-16 h-16 object-cover rounded-xl border border-pink-300">
+                        </div>
+                    @elseif ($existingImage)
+                        <div class="mb-2">
+                            <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Current Image:</span>
+                            <img src="{{ asset('storage/' . $existingImage) }}" class="w-16 h-16 object-cover rounded-xl border border-slate-200">
+                        </div>
+                    @endif
+
                     <input type="file" wire:model="productImage" class="text-xs">
+                    
+                    <div wire:loading wire:target="productImage" class="text-[9px] text-pink-600 font-semibold mt-1">
+                        Uploading photo...
+                    </div>
+                    @error('productImage') <span class="text-[10px] text-red-500 font-bold block mt-1">{{ $message }}</span> @enderror
                 </div>
+
                 <label class="flex items-center gap-2 cursor-pointer font-bold text-xs text-sky-950">
                     <input type="checkbox" wire:model="productState.is_available" class="accent-pink-600 w-4 h-4">
                     <span>Available in Store</span>
                 </label>
             </div>
 
+            <!-- SUBMIT BUTTON WITH SAFEGUARD -->
             <button 
                 type="button" 
                 wire:click="saveProduct" 
-                class="w-full bg-[#1A365D] hover:bg-slate-800 text-white py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer"
+                wire:loading.attr="disabled"
+                wire:target="saveProduct, productImage"
+                class="w-full bg-[#1A365D] hover:bg-slate-800 disabled:opacity-50 text-white py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer"
             >
-                Save Product
+                <span wire:loading.remove wire:target="saveProduct, productImage">
+                    {{ $editingId === 'new' ? 'Save New Product' : 'Save Changes' }}
+                </span>
+                <span wire:loading wire:target="saveProduct">
+                    Saving Product...
+                </span>
+                <span wire:loading wire:target="productImage">
+                    Uploading image...
+                </span>
             </button>
         </div>
     @endif
@@ -98,7 +130,8 @@
     <!-- PRODUCTS GRID -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         @foreach($this->products as $prod)
-            <div class="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between space-y-4">
+            <!-- ✅ CRUCIAL FIX: Added wire:key to prevent DOM morphing glitches -->
+            <div wire:key="prod-{{ $prod->id }}" class="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between space-y-4">
                 <div>
                     <div class="flex items-center justify-between mb-3">
                         <span class="text-3xl">{{ $prod->icon }}</span>
@@ -108,6 +141,11 @@
                             </span>
                         @endif
                     </div>
+                    
+                    @if($prod->image)
+                        <img src="{{ asset('storage/' . $prod->image) }}" class="w-full h-32 object-cover rounded-2xl mb-3 border border-slate-100">
+                    @endif
+
                     <h3 class="font-serif text-lg font-bold text-[#1A365D] mb-1">
                         {{ $prod->getTranslation('title', 'en') }}
                     </h3>
@@ -119,12 +157,19 @@
 
                 <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
                     <div>
-                        <span class="font-serif text-lg font-black text-[#1A365D]">
+                        <span class="font-serif text-lg font-black text-[#1A365D] block">
                             {{ $prod->currency }} {{ number_format($prod->price, 2) }}
                         </span>
-                        <span class="block text-[9px] font-bold {{ $prod->is_available ? 'text-emerald-600' : 'text-slate-400' }}">
+                        
+                        <!-- ✅ CRUCIAL FIX: Clickable toggle availability button -->
+                        <button 
+                            type="button" 
+                            wire:click="toggleAvailability({{ $prod->id }})" 
+                            class="text-[9px] font-bold cursor-pointer hover:underline {{ $prod->is_available ? 'text-emerald-600' : 'text-slate-400' }}"
+                            title="Click to toggle stock status"
+                        >
                             {{ $prod->is_available ? '● In Stock' : '○ Out of Stock' }}
-                        </span>
+                        </button>
                     </div>
 
                     <div class="flex items-center gap-2">

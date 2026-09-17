@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 
 class ManageProjectsPage extends Component
 {
@@ -28,6 +29,7 @@ class ManageProjectsPage extends Component
             $this->loadKey($key); 
         }
 
+        // 2. Project card keys (1 to 4)
         for ($p = 1; $p <= 4; $p++) {
             $this->loadKey("pj_{$p}_cat");
             $this->loadKey("pj_{$p}_title1");
@@ -38,33 +40,49 @@ class ManageProjectsPage extends Component
 
             for ($img = 1; $img <= 3; $img++) {
                 $imgKey = "pj_{$p}_img{$img}";
-                $this->existing[$imgKey] = Setting::where('key', $imgKey)->first()?->value;
+                $this->existing[$imgKey] = $this->cleanImagePath(Setting::where('key', $imgKey)->first()?->value);
             }
         }
+    }
+
+    private function cleanImagePath($val): ?string
+    {
+        if (!$val) return null;
+        if (is_array($val)) return $val['en'] ?? reset($val) ?? null;
+
+        if (is_string($val) && (str_starts_with($val, '{') || str_starts_with($val, '['))) {
+            $decoded = json_decode($val, true);
+            if (is_array($decoded)) return $decoded['en'] ?? reset($decoded) ?? null;
+        }
+        return trim($val, "\"'");
     }
 
     private function loadKey($key)
     {
         $setting = Setting::where('key', $key)->first();
         $this->state[$key] = [
-            'en' => $setting ? $setting->getTranslation('value', 'en') : '',
-            'si' => $setting ? $setting->getTranslation('value', 'si') : '',
-            'ta' => $setting ? $setting->getTranslation('value', 'ta') : '',
+            'en' => $setting ? $setting->getTranslation('value', 'en', false) : '',
+            'si' => $setting ? $setting->getTranslation('value', 'si', false) : '',
+            'ta' => $setting ? $setting->getTranslation('value', 'ta', false) : '',
         ];
     }
 
-    public function updated($propertyName)
+    public function getFullPreviewStateProperty(): array
     {
-        $previewData = $this->state;
+        // ✅ CRUCIAL FIX: Merge existing images with text so images never disappear while typing
+        $previewData = array_merge($this->existing, $this->state);
 
-        // Temporary preview URLs for uploaded gallery images
         foreach ($this->images as $key => $file) {
-            if ($file) {
+            if ($file && method_exists($file, 'temporaryUrl')) {
                 $previewData[$key] = $file->temporaryUrl();
             }
         }
 
-        // Target Section and Card detection
+        return $previewData;
+    }
+
+    public function updated($propertyName)
+    {
         $targetSection = 'projects-hero';
         $cardIndex = null;
 
@@ -76,7 +94,7 @@ class ManageProjectsPage extends Component
         }
 
         $this->dispatch('content-updated', [
-            'state' => $previewData,
+            'state' => $this->full_preview_state,
             'targetSection' => $targetSection,
             'cardIndex' => $cardIndex,
         ]);
@@ -84,6 +102,12 @@ class ManageProjectsPage extends Component
 
     public function save()
     {
+        // Validate uploads
+        $this->validate([
+            'images.*' => 'nullable|image|max:10240',
+        ]);
+
+        // 1. Save text fields
         foreach ($this->state as $key => $translations) {
             $setting = Setting::firstOrNew(['key' => $key]);
             foreach ($translations as $lang => $val) {
@@ -92,16 +116,27 @@ class ManageProjectsPage extends Component
             $setting->save();
         }
 
+        // 2. Save images safely (Prevents id wipeout)
         foreach ($this->images as $key => $file) {
             if ($file) {
                 $path = $file->store('projects', 'public');
-                $imgSetting = Setting::firstOrNew(['key' => $key]);
-                $imgSetting->setRawAttributes(['key' => $key, 'value' => $path]);
-                $imgSetting->save();
+                Setting::updateOrCreate(
+                    ['key' => $key],
+                    ['value' => $path]
+                );
                 $this->existing[$key] = $path;
             }
         }
         $this->images = [];
+
+        // ✅ CRUCIAL FIX: Invalidate settings cache
+        Cache::forget('api_settings_map');
+
+        // ✅ CRUCIAL FIX: Notify preview iframe to reload settings
+        $this->dispatch('settings-published', [
+            'state' => $this->full_preview_state,
+            'targetSection' => 'projects-hero',
+        ]);
 
         session()->flash('message', 'Project portfolio & modal details saved successfully!');
     }

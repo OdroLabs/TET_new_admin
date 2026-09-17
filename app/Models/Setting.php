@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Translatable\HasTranslations;
 
 class Setting extends Model
@@ -13,7 +14,18 @@ class Setting extends Model
 
     public $translatable = ['value'];
 
-   
+    protected static function booted()
+    {
+        // Invalidate settings cache whenever a setting is created, updated, or deleted
+        static::saved(function () {
+            Cache::forget('api_settings_map');
+        });
+
+        static::deleted(function () {
+            Cache::forget('api_settings_map');
+        });
+    }
+
     public function isTranslatableAttribute(string $key): bool
     {
         if ($key !== 'value') {
@@ -30,7 +42,6 @@ class Setting extends Model
         }
 
         $nonTranslatable = array_merge([
-
             // Navigation & Branding
             'site_logo', 'nav_donate_url',
 

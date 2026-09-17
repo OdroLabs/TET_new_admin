@@ -4,7 +4,7 @@
     <div class="w-full lg:w-[650px] h-full overflow-y-auto p-8 lg:p-10 border-r border-slate-200 scroll-smooth">
         <header class="mb-8">
             <h2 class="font-serif text-3xl font-bold italic text-[#1A365D]">Project Portfolio</h2>
-            <p class="text-slate-400 text-[9px] mt-1 font-bold uppercase tracking-widest">Advocacy Initiatives & Detailed Case Studies</p>
+            <p class="text-slate-400 text-[9px] mt-1 font-bold uppercase tracking-widest">Advocacy Initiatives &amp; Detailed Case Studies</p>
             
             @if (session()->has('message'))
                 <div class="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
@@ -75,12 +75,26 @@
                             </label>
                             <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
                                 @for($img = 1; $img <= 3; $img++)
+                                    @php $imgKey = "pj_{$p}_img{$img}"; @endphp
                                     <div class="p-2 bg-white rounded-xl border border-slate-200">
                                         <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">Image 0{{ $img }}</label>
-                                        <input type="file" wire:model="images.pj_{{ $p }}_img{{ $img }}" class="text-[9px] w-full">
-                                        @if(!empty($existing["pj_{$p}_img{$img}"]))
-                                            <span class="text-[8px] text-emerald-600 font-semibold block mt-1">✓ Saved</span>
+                                        
+                                        <!-- Preview -->
+                                        @if(!empty($images[$imgKey]))
+                                            <img src="{{ $images[$imgKey]->temporaryUrl() }}" class="w-full h-16 object-cover rounded-lg border border-pink-300 mb-1">
+                                        @elseif(!empty($existing[$imgKey]))
+                                            <img src="{{ asset('storage/' . $existing[$imgKey]) }}" class="w-full h-16 object-cover rounded-lg border border-slate-200 mb-1">
                                         @endif
+
+                                        <input type="file" wire:model="images.{{ $imgKey }}" class="text-[9px] w-full">
+                                        
+                                        <div wire:loading wire:target="images.{{ $imgKey }}" class="text-[8px] text-pink-600 font-semibold mt-1">
+                                            Uploading...
+                                        </div>
+
+                                        @error("images.{$imgKey}")
+                                            <span class="text-[8px] text-red-500 font-bold block mt-1">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 @endfor
                             </div>
@@ -102,17 +116,30 @@
 
             <!-- STICKY PUBLISH BUTTON -->
             <div class="sticky bottom-6 z-30">
-                <button type="submit" class="w-full bg-[#1A365D] text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all">
-                    Publish Projects Portfolio
+                <button 
+                    type="submit" 
+                    wire:loading.attr="disabled"
+                    class="w-full bg-[#1A365D] hover:bg-slate-800 disabled:opacity-50 text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                >
+                    <span wire:loading.remove wire:target="save, images">
+                        Publish Projects Portfolio
+                    </span>
+                    <span wire:loading wire:target="save">
+                        Publishing Projects...
+                    </span>
+                    <span wire:loading wire:target="images">
+                        Uploading images, please wait...
+                    </span>
                 </button>
             </div>
         </form>
     </div>
 
     <!-- RIGHT: PREVIEW (IFRAME) -->
-   <x-preview-panel :url="env('FRONTEND_URL', 'https://tet-frontend.vercel.app') . '/projects'" />
+    <x-preview-panel :url="env('FRONTEND_URL', 'https://tet-frontend.vercel.app') . '/projects'" />
+
     <!-- DELEGATED LIVE SCROLL & PREVIEW SCRIPT -->
-   <script>
+    <script>
     (function() {
         const getIframe = () => document.getElementById('preview-iframe');
 
@@ -146,7 +173,6 @@
         function handleInteraction(e) {
             const cardItem = e.target.closest('[data-card]');
 
-            // 1. If clicked or focused inside a Project Card -> Open its modal
             if (cardItem) {
                 const cardIdx = parseInt(cardItem.getAttribute('data-card'), 10);
                 sendScroll('projects-grid', cardIdx);
@@ -154,7 +180,6 @@
                 return;
             }
 
-            // 2. Clicked or focused ANYWHERE ELSE -> Close the modal!
             sendModalAction('CLOSE');
 
             const sectionContainer = e.target.closest('[data-section]');
@@ -163,11 +188,10 @@
             }
         }
 
-        // Delegated Focus & Click listeners
         document.addEventListener('focusin', handleInteraction);
         document.addEventListener('click', handleInteraction);
 
-        // When Livewire updates values
+        // When typing or selecting images (live preview)
         window.addEventListener('content-updated', function(event) {
             const iframe = getIframe();
             const detail = event.detail?.[0] || event.detail;
@@ -183,7 +207,22 @@
                 }
             }
         });
+
+        // When clicking "Publish" button
+        window.addEventListener('settings-published', function(event) {
+            const iframe = getIframe();
+            if (!iframe || !iframe.contentWindow) return;
+
+            iframe.contentWindow.postMessage({ type: 'TET_RELOAD_SETTINGS' }, '*');
+
+            const detail = event.detail?.[0] || event.detail;
+            if (detail?.state) {
+                iframe.contentWindow.postMessage({
+                    type: 'TET_LIVE_PREVIEW',
+                    state: detail.state
+                }, '*');
+            }
+        });
     })();
     </script>
-
 </div>

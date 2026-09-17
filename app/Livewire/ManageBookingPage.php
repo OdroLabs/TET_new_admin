@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 
 class ManageBookingPage extends Component
 {
@@ -15,7 +16,6 @@ class ManageBookingPage extends Component
     public $hall_image;
     public $existing = [];
 
-    // All keys matching your Next.js frontend
     protected $textKeys = [
         // 01. Hero
         'se_hero_badge', 'se_hero_title1', 'se_hero_title2', 'se_hero_desc',
@@ -44,19 +44,34 @@ class ManageBookingPage extends Component
 
         foreach ($this->urlKeys as $key) {
             $setting = Setting::where('key', $key)->first();
-            $this->urls[$key] = $setting ? $setting->getRawOriginal('value') : ($urlDefaults[$key] ?? '');
+            $this->urls[$key] = $setting ? $this->cleanValue($setting) : ($urlDefaults[$key] ?? '');
         }
 
-        $this->existing['se_hall_img'] = Setting::where('key', 'se_hall_img')->first()?->value;
+        $this->existing['se_hall_img'] = $this->cleanValue(Setting::where('key', 'se_hall_img')->first());
+    }
+
+    private function cleanValue($setting): ?string
+    {
+        if (!$setting) return null;
+        $val = $setting->getRawOriginal('value');
+        if (!$val) return null;
+
+        if (is_string($val) && (str_starts_with($val, '{') || str_starts_with($val, '['))) {
+            $decoded = json_decode($val, true);
+            if (is_array($decoded)) {
+                return $decoded['en'] ?? reset($decoded) ?? null;
+            }
+        }
+        return trim($val, "\"'");
     }
 
     private function loadKey($key)
     {
         $setting = Setting::where('key', $key)->first();
         $this->state[$key] = [
-            'en' => $setting ? $setting->getTranslation('value', 'en') : '',
-            'si' => $setting ? $setting->getTranslation('value', 'si') : '',
-            'ta' => $setting ? $setting->getTranslation('value', 'ta') : '',
+            'en' => $setting ? $setting->getTranslation('value', 'en', false) : '',
+            'si' => $setting ? $setting->getTranslation('value', 'si', false) : '',
+            'ta' => $setting ? $setting->getTranslation('value', 'ta', false) : '',
         ];
     }
 
@@ -64,12 +79,10 @@ class ManageBookingPage extends Component
     {
         $previewData = array_merge($this->state, $this->urls);
 
-        // Preview temporary image or existing image
         $previewData['se_hall_img'] = $this->hall_image 
             ? $this->hall_image->temporaryUrl() 
             : ($this->existing['se_hall_img'] ?? null);
 
-        // Section auto-scroll target
         $targetSection = 'se-hero';
         if (str_contains($propertyName, 'hall')) {
             $targetSection = 'hall-booking';
@@ -104,7 +117,7 @@ class ManageBookingPage extends Component
             );
         }
 
-        // 3. Save Hall Photo (uses updateOrCreate to prevent erasing ID)
+        // 3. Save Hall Photo
         if ($this->hall_image) {
             $path = $this->hall_image->store('booking', 'public');
             Setting::updateOrCreate(
@@ -115,15 +128,17 @@ class ManageBookingPage extends Component
             $this->hall_image = null;
         }
 
+        // Bust settings API cache
+        Cache::forget('api_settings_map');
+
         // Dispatch updated persistent state to preview
         $previewData = array_merge($this->state, $this->urls);
         $previewData['se_hall_img'] = $this->existing['se_hall_img'] ?? null;
 
-        $this->dispatch('content-updated', [
+        $this->dispatch('settings-published', [
             'state' => $previewData,
             'targetSection' => 'se-hero',
         ]);
-        $this->dispatch('reload-settings');
 
         session()->flash('message', 'TET Spaces & Enterprises content published successfully!');
     }

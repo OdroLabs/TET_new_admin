@@ -101,18 +101,48 @@
                     <!-- 5. PHOTO UPLOAD -->
                     <div class="pt-2 border-t border-pink-200/60">
                         <label class="text-[9px] font-bold uppercase text-slate-500 block mb-1">Activity Photo</label>
-                        <input type="file" wire:model="activityImage" class="text-xs w-full">
-                        @if($existingActivityImage && !$activityImage)
-                            <span class="text-[8px] text-emerald-600 font-bold block mt-1">✓ Photo already uploaded</span>
+                        
+                        <!-- Upload Previews -->
+                        @if ($activityImage)
+                            <div class="mb-2">
+                                <span class="text-[8px] text-slate-400 font-bold uppercase block mb-1">New Photo Preview:</span>
+                                <img src="{{ $activityImage->temporaryUrl() }}" class="w-24 h-24 object-cover rounded-xl border border-pink-300">
+                            </div>
+                        @elseif ($existingActivityImage)
+                            <div class="mb-2">
+                                <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Current Image:</span>
+                                <img src="{{ asset('storage/' . $existingActivityImage) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                            </div>
                         @endif
+
+                        <input type="file" wire:model="activityImage" class="text-xs w-full">
+                        
+                        <div wire:loading wire:target="activityImage" class="text-[10px] text-pink-600 font-semibold mt-1">
+                            Uploading photo, please wait...
+                        </div>
+
+                        @error('activityImage') 
+                            <span class="text-[10px] text-red-500 font-bold block mt-1">{{ $message }}</span> 
+                        @enderror
                     </div>
 
+                    <!-- SUBMIT BUTTON WITH LOADING SAFEGUARD -->
                     <button 
                         type="button" 
                         wire:click="saveActivity" 
-                        class="w-full bg-[#1A365D] hover:bg-slate-800 text-white py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer mt-4"
+                        wire:loading.attr="disabled"
+                        wire:target="activityImage, saveActivity"
+                        class="w-full bg-[#1A365D] hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all cursor-pointer mt-4"
                     >
-                        {{ $editingId === 'new' ? 'Publish New Activity' : 'Save Changes' }}
+                        <span wire:loading.remove wire:target="saveActivity, activityImage">
+                            {{ $editingId === 'new' ? 'Publish New Activity' : 'Save Changes' }}
+                        </span>
+                        <span wire:loading wire:target="saveActivity">
+                            Saving Activity...
+                        </span>
+                        <span wire:loading wire:target="activityImage">
+                            Uploading image...
+                        </span>
                     </button>
                 </div>
             @endif
@@ -125,9 +155,15 @@
                         class="p-4 bg-slate-50 rounded-2xl border border-slate-200 flex items-center justify-between hover:bg-slate-100 transition-all"
                     >
                         <div class="flex items-center gap-3">
-                            <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-800 text-xs font-bold flex items-center justify-center">
-                                {{ $act->order }}
-                            </span>
+                            <!-- Thumbnail -->
+                            @if($act->image)
+                                <img src="{{ asset('storage/' . $act->image) }}" class="w-10 h-10 object-cover rounded-lg border border-slate-200">
+                            @else
+                                <span class="w-10 h-10 rounded-lg bg-sky-100 text-sky-800 text-xs font-bold flex items-center justify-center">
+                                    {{ $act->order }}
+                                </span>
+                            @endif
+
                             <div>
                                 <h4 class="text-xs font-bold text-[#1A365D] line-clamp-1">
                                     {{ $act->getTranslation('title', 'en') ?: 'Untitled Activity #' . $act->id }}
@@ -159,50 +195,61 @@
         </div>
     </div>
 
-    <!-- RIGHT: PREVIEW IFRAME -->
-     <x-preview-panel :url="env('FRONTEND_URL', 'https://tet-frontend.vercel.app') . '/news'" />
+    <!-- RIGHT: PREVIEW PANEL -->
+    <x-preview-panel :url="env('FRONTEND_URL', 'https://tet-frontend.vercel.app') . '/news'" />
 
     <!-- SCRIPT -->
-    <script>
-    (function() {
-        const getIframe = () => document.getElementById('preview-iframe');
+    // In manage-news-page.blade.php
+<script>
+(function() {
+    const getIframe = () => document.getElementById('preview-iframe');
 
-        function sendScroll(sectionId, activityId = null) {
-            const iframe = getIframe();
-            if (!iframe || !iframe.contentWindow) return;
-            iframe.contentWindow.postMessage({
-                type: 'TET_SCROLL_TO_SECTION',
-                sectionId: sectionId,
-                activityId: activityId
-            }, '*');
+    function sendScroll(sectionId, activityId = null) {
+        const iframe = getIframe();
+        if (!iframe || !iframe.contentWindow) return;
+        iframe.contentWindow.postMessage({
+            type: 'TET_SCROLL_TO_SECTION',
+            sectionId: sectionId,
+            activityId: activityId
+        }, '*');
+    }
+
+    function sendModal(action, id = null) {
+        const iframe = getIframe();
+        if (!iframe || !iframe.contentWindow) return;
+        iframe.contentWindow.postMessage({
+            type: action === 'OPEN' ? 'TET_OPEN_MODAL' : 'TET_CLOSE_MODAL',
+            id: id
+        }, '*');
+    }
+
+    // Live preview typing
+    window.addEventListener('content-updated', function(e) {
+        const iframe = getIframe();
+        const detail = e.detail?.[0] || e.detail;
+        if (iframe && iframe.contentWindow && detail?.state) {
+            iframe.contentWindow.postMessage({ type: 'TET_LIVE_PREVIEW', state: detail.state }, '*');
+            if (detail.activityId) sendModal('OPEN', detail.activityId);
         }
+    });
 
-        function sendModal(action, id = null) {
-            const iframe = getIframe();
-            if (!iframe || !iframe.contentWindow) return;
-            iframe.contentWindow.postMessage({
-                type: action === 'OPEN' ? 'TET_OPEN_MODAL' : 'TET_CLOSE_MODAL',
-                id: id
-            }, '*');
+    // When headers are published
+    window.addEventListener('settings-published', function(e) {
+        const iframe = getIframe();
+        if (iframe && iframe.contentWindow) {
+            iframe.contentWindow.postMessage({ type: 'TET_RELOAD_SETTINGS' }, '*');
         }
+    });
 
-        // Livewire updates
-        window.addEventListener('content-updated', function(e) {
-            const iframe = getIframe();
-            const detail = e.detail?.[0] || e.detail;
-            if (iframe && iframe.contentWindow && detail?.state) {
-                iframe.contentWindow.postMessage({ type: 'TET_LIVE_PREVIEW', state: detail.state }, '*');
-                if (detail.activityId) sendModal('OPEN', detail.activityId);
-            }
-        });
-
-        // Trigger iframe reload on create/delete
-        window.addEventListener('reload-frontend-collection', function() {
-            const iframe = getIframe();
-            if (iframe && iframe.contentWindow) {
-                iframe.contentWindow.postMessage({ type: 'TET_RELOAD_COLLECTION' }, '*');
-            }
-        });
-    })();
-    </script>
+    // When an activity card is created, edited, or deleted
+    window.addEventListener('reload-frontend-collection', function() {
+        const iframe = getIframe();
+        if (iframe && iframe.contentWindow) {
+            // Tell iframe to refetch /api/activities
+            iframe.contentWindow.postMessage({ type: 'TET_RELOAD_COLLECTION' }, '*');
+            iframe.contentWindow.postMessage({ type: 'TET_RELOAD_SETTINGS' }, '*');
+        }
+    });
+})();
+</script>
 </div>

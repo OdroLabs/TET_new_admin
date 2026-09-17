@@ -6,6 +6,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Activity;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 class ManageNewsPage extends Component
 {
@@ -14,7 +16,7 @@ class ManageNewsPage extends Component
     // Header State
     public $state = [];
 
-    // Active Activity Editing (Category removed, Title is primary)
+    // Active Activity Editing
     public $editingId = null;
     public $activityState = [
         'title' => ['en' => '', 'si' => '', 'ta' => ''],
@@ -27,7 +29,10 @@ class ManageNewsPage extends Component
     public $existingActivityImage;
 
     protected $headerKeys = [
-        'act_hero_label', 'act_hero_title1', 'act_hero_title2', 'act_hero_desc'
+        'act_hero_label',
+        'act_hero_title1',
+        'act_hero_title2',
+        'act_hero_desc'
     ];
 
     public function mount()
@@ -35,9 +40,9 @@ class ManageNewsPage extends Component
         foreach ($this->headerKeys as $key) {
             $setting = Setting::where('key', $key)->first();
             $this->state[$key] = [
-                'en' => $setting ? $setting->getTranslation('value', 'en') : '',
-                'si' => $setting ? $setting->getTranslation('value', 'si') : '',
-                'ta' => $setting ? $setting->getTranslation('value', 'ta') : '',
+                'en' => $setting ? $setting->getTranslation('value', 'en', false) : '',
+                'si' => $setting ? $setting->getTranslation('value', 'si', false) : '',
+                'ta' => $setting ? $setting->getTranslation('value', 'ta', false) : '',
             ];
         }
     }
@@ -47,7 +52,6 @@ class ManageNewsPage extends Component
         return Activity::orderBy('order', 'asc')->get();
     }
 
-    // ➕ New Activity Form
     public function newActivity()
     {
         $this->editingId = 'new';
@@ -67,32 +71,31 @@ class ManageNewsPage extends Component
         ]);
     }
 
-    // ✏️ Edit Existing Activity
     public function editActivity($id)
     {
         $act = Activity::findOrFail($id);
         $this->editingId = $id;
         $this->activityState = [
             'title' => [
-                'en' => $act->getTranslation('title', 'en') ?: '',
-                'si' => $act->getTranslation('title', 'si') ?: '',
-                'ta' => $act->getTranslation('title', 'ta') ?: '',
+                'en' => $act->getTranslation('title', 'en', false) ?: '',
+                'si' => $act->getTranslation('title', 'si', false) ?: '',
+                'ta' => $act->getTranslation('title', 'ta', false) ?: '',
             ],
             'date' => $act->date ?: '',
             'location' => [
-                'en' => $act->getTranslation('location', 'en') ?: '',
-                'si' => $act->getTranslation('location', 'si') ?: '',
-                'ta' => $act->getTranslation('location', 'ta') ?: '',
+                'en' => $act->getTranslation('location', 'en', false) ?: '',
+                'si' => $act->getTranslation('location', 'si', false) ?: '',
+                'ta' => $act->getTranslation('location', 'ta', false) ?: '',
             ],
             'excerpt' => [
-                'en' => $act->getTranslation('excerpt', 'en') ?: '',
-                'si' => $act->getTranslation('excerpt', 'si') ?: '',
-                'ta' => $act->getTranslation('excerpt', 'ta') ?: '',
+                'en' => $act->getTranslation('excerpt', 'en', false) ?: '',
+                'si' => $act->getTranslation('excerpt', 'si', false) ?: '',
+                'ta' => $act->getTranslation('excerpt', 'ta', false) ?: '',
             ],
             'full_story' => [
-                'en' => $act->getTranslation('full_story', 'en') ?: '',
-                'si' => $act->getTranslation('full_story', 'si') ?: '',
-                'ta' => $act->getTranslation('full_story', 'ta') ?: '',
+                'en' => $act->getTranslation('full_story', 'en', false) ?: '',
+                'si' => $act->getTranslation('full_story', 'si', false) ?: '',
+                'ta' => $act->getTranslation('full_story', 'ta', false) ?: '',
             ],
         ];
         $this->existingActivityImage = $act->image;
@@ -105,9 +108,14 @@ class ManageNewsPage extends Component
         ]);
     }
 
-    // 💾 Save Activity
     public function saveActivity()
     {
+        if ($this->activityImage) {
+            $this->validate([
+                'activityImage' => 'image|max:10240',
+            ]);
+        }
+
         if ($this->editingId === 'new') {
             $act = new Activity();
             $act->order = (Activity::max('order') ?? 0) + 1;
@@ -116,6 +124,9 @@ class ManageNewsPage extends Component
             $act = Activity::findOrFail($this->editingId);
         }
 
+        // ✅ CRUCIAL FIX 1: Set is_published to true so API fetches it
+        $act->is_published = true;
+
         foreach (['title', 'location', 'excerpt', 'full_story'] as $field) {
             foreach ($this->activityState[$field] as $lang => $val) {
                 $act->setTranslation($field, $lang, $val ?? '');
@@ -123,27 +134,42 @@ class ManageNewsPage extends Component
         }
         $act->date = $this->activityState['date'] ?? 'Today';
 
+        // Persist new file and delete old file if replaced
         if ($this->activityImage) {
+            if ($act->image && Storage::disk('public')->exists($act->image)) {
+                Storage::disk('public')->delete($act->image);
+            }
             $act->image = $this->activityImage->store('news', 'public');
         }
 
         $act->save();
+
+        // ✅ CRUCIAL FIX 2: Flush the API activities cache immediately
+        Cache::forget('api_activities_list');
+
         $this->editingId = null;
         $this->activityImage = null;
+        $this->existingActivityImage = null;
 
         session()->flash('message', 'Activity successfully saved!');
         $this->dispatch('reload-frontend-collection');
     }
 
-    // 🗑️ Delete Activity
     public function deleteActivity($id)
     {
-        Activity::findOrFail($id)->delete();
+        $act = Activity::findOrFail($id);
+        if ($act->image && Storage::disk('public')->exists($act->image)) {
+            Storage::disk('public')->delete($act->image);
+        }
+        $act->delete();
+
+        // ✅ CRUCIAL FIX 2: Flush cache on delete
+        Cache::forget('api_activities_list');
+
         session()->flash('message', 'Activity removed!');
         $this->dispatch('reload-frontend-collection');
     }
 
-    // Save Header Settings
     public function saveHeaders()
     {
         foreach ($this->state as $key => $translations) {
@@ -153,7 +179,15 @@ class ManageNewsPage extends Component
             }
             $setting->save();
         }
+
+        // Flush API settings cache
+        Cache::forget('api_settings_map');
+
         session()->flash('message', 'Header settings published!');
+        $this->dispatch('settings-published', [
+            'state' => $this->state,
+            'targetSection' => 'news-hero'
+        ]);
     }
 
     public function updated($propertyName)

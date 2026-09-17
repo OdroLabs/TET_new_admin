@@ -41,5 +41,5 @@ Route::get('/admin/footer', ManageFooter::class);
 
 
 Route::get('/', function () {
-    return redirect()->route('login');
+    return view('livewire.manage-home-page');
 });

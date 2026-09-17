@@ -28,10 +28,27 @@
                 
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <label class="text-[9px] font-bold uppercase text-slate-500 mb-1 block">Hero Main Image</label>
-                    <input type="file" wire:model="about_hero_image" class="text-[10px] w-full">
-                    @if(!empty($existing['about_hero_image']))
-                        <p class="text-[8px] text-slate-400 mt-1">Current: {{ $existing['about_hero_image'] }}</p>
+                    
+                    @if ($about_hero_image)
+                        <div class="mb-2">
+                            <span class="text-[8px] text-blue-600 font-bold uppercase block mb-1">New Image Preview:</span>
+                            <img src="{{ $about_hero_image->temporaryUrl() }}" class="w-24 h-24 object-cover rounded-xl border border-blue-300">
+                        </div>
+                    @elseif(!empty($existing['about_hero_image']))
+                        <div class="mb-2">
+                            <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
+                            <img src="{{ asset('storage/' . $existing['about_hero_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                        </div>
                     @endif
+
+                    <input type="file" wire:model="about_hero_image" class="text-[10px] w-full">
+                    
+                    <div wire:loading wire:target="about_hero_image" class="text-[10px] text-blue-600 font-semibold mt-1">
+                        Uploading image, please wait...
+                    </div>
+                    @error('about_hero_image') 
+                        <span class="text-[10px] text-red-500 font-bold block mt-1">{{ $message }}</span> 
+                    @enderror
                 </div>
             </div>
 
@@ -104,10 +121,27 @@
 
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <label class="text-[9px] font-bold uppercase text-slate-500 mb-1 block">Leader Portrait Photo</label>
-                    <input type="file" wire:model="about_leader_image" class="text-[10px] w-full">
-                    @if(!empty($existing['about_leader_image']))
-                        <p class="text-[8px] text-slate-400 mt-1">Current: {{ $existing['about_leader_image'] }}</p>
+                    
+                    @if ($about_leader_image)
+                        <div class="mb-2">
+                            <span class="text-[8px] text-amber-600 font-bold uppercase block mb-1">New Image Preview:</span>
+                            <img src="{{ $about_leader_image->temporaryUrl() }}" class="w-24 h-24 object-cover rounded-xl border border-amber-300">
+                        </div>
+                    @elseif(!empty($existing['about_leader_image']))
+                        <div class="mb-2">
+                            <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
+                            <img src="{{ asset('storage/' . $existing['about_leader_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                        </div>
                     @endif
+
+                    <input type="file" wire:model="about_leader_image" class="text-[10px] w-full">
+                    
+                    <div wire:loading wire:target="about_leader_image" class="text-[10px] text-amber-600 font-semibold mt-1">
+                        Uploading image, please wait...
+                    </div>
+                    @error('about_leader_image') 
+                        <span class="text-[10px] text-red-500 font-bold block mt-1">{{ $message }}</span> 
+                    @enderror
                 </div>
             </div>
 
@@ -124,17 +158,47 @@
 
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <label class="text-[9px] font-bold uppercase text-slate-500 mb-1 block">Team Showcase Group Photo</label>
-                    <input type="file" wire:model="about_team_group_image" class="text-[10px] w-full">
-                    @if(!empty($existing['about_team_group_image']))
-                        <p class="text-[8px] text-slate-400 mt-1">Current: {{ $existing['about_team_group_image'] }}</p>
+                    
+                    @if ($about_team_group_image)
+                        <div class="mb-2">
+                            <span class="text-[8px] text-emerald-600 font-bold uppercase block mb-1">New Image Preview:</span>
+                            <img src="{{ $about_team_group_image->temporaryUrl() }}" class="w-24 h-24 object-cover rounded-xl border border-emerald-300">
+                        </div>
+                    @elseif(!empty($existing['about_team_group_image']))
+                        <div class="mb-2">
+                            <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
+                            <img src="{{ asset('storage/' . $existing['about_team_group_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                        </div>
                     @endif
+
+                    <input type="file" wire:model="about_team_group_image" class="text-[10px] w-full">
+                    
+                    <div wire:loading wire:target="about_team_group_image" class="text-[10px] text-emerald-600 font-semibold mt-1">
+                        Uploading image, please wait...
+                    </div>
+                    @error('about_team_group_image') 
+                        <span class="text-[10px] text-red-500 font-bold block mt-1">{{ $message }}</span> 
+                    @enderror
                 </div>
             </div>
 
-            <!-- STICKY ACTION BUTTON -->
+            <!-- STICKY ACTION BUTTON WITH LOADING SAFEGUARD -->
             <div class="sticky bottom-6 z-30">
-                <button type="submit" class="w-full bg-[#1A365D] text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all">
-                    Publish About Page
+                <button 
+                    type="submit" 
+                    wire:loading.attr="disabled"
+                    wire:target="save, about_hero_image, about_leader_image, about_team_group_image"
+                    class="w-full bg-[#1A365D] hover:bg-slate-800 disabled:opacity-50 disabled:cursor-not-allowed text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl transition-all"
+                >
+                    <span wire:loading.remove wire:target="save, about_hero_image, about_leader_image, about_team_group_image">
+                        Publish About Page
+                    </span>
+                    <span wire:loading wire:target="save">
+                        Publishing Page...
+                    </span>
+                    <span wire:loading wire:target="about_hero_image, about_leader_image, about_team_group_image">
+                        Uploading images, please wait...
+                    </span>
                 </button>
             </div>
         </form>
@@ -142,52 +206,73 @@
 
     <!-- RIGHT: PREVIEW (IFRAME) -->
     <x-preview-panel :url="env('FRONTEND_URL', 'https://tet-frontend.vercel.app') . '/about'" />
+    
     <!-- DELEGATED LIVE SCROLL & PREVIEW SCRIPT -->
     <script>
-    (function() {
-        const getIframe = () => document.getElementById('preview-iframe');
+(function() {
+    const getIframe = () => document.getElementById('preview-iframe');
 
-        function sendScroll(sectionId) {
-            const iframe = getIframe();
-            if (!iframe || !iframe.contentWindow) return;
+    function sendScroll(sectionId) {
+        const iframe = getIframe();
+        if (!iframe || !iframe.contentWindow) return;
+        iframe.contentWindow.postMessage({
+            type: 'TET_SCROLL_TO_SECTION',
+            sectionId: sectionId
+        }, '*');
+    }
 
+    document.addEventListener('focusin', function(e) {
+        const container = e.target.closest('[data-section]');
+        if (container) sendScroll(container.getAttribute('data-section'));
+    });
+
+    document.addEventListener('click', function(e) {
+        const container = e.target.closest('[data-section]');
+        if (container) sendScroll(container.getAttribute('data-section'));
+    });
+
+    // 1. Send live updates during typing or file selection
+    window.addEventListener('content-updated', function(event) {
+        const iframe = getIframe();
+        const detail = event.detail?.[0] || event.detail;
+
+        if (iframe && iframe.contentWindow && detail?.state) {
             iframe.contentWindow.postMessage({
-                type: 'TET_SCROLL_TO_SECTION',
-                sectionId: sectionId
+                type: 'TET_LIVE_PREVIEW',
+                state: detail.state
+            }, '*');
+
+            if (detail.targetSection) {
+                sendScroll(detail.targetSection);
+            }
+        }
+    });
+
+    // 2. On publish: Tell iframe to reload settings from the backend API
+    window.addEventListener('settings-published', function(event) {
+        const iframe = getIframe();
+        if (!iframe || !iframe.contentWindow) return;
+
+        iframe.contentWindow.postMessage({ type: 'TET_RELOAD_SETTINGS' }, '*');
+
+        const detail = event.detail?.[0] || event.detail;
+        if (detail?.state) {
+            iframe.contentWindow.postMessage({
+                type: 'TET_LIVE_PREVIEW',
+                state: detail.state
             }, '*');
         }
+    });
 
-        // 1. Delegated Focus & Click listeners (survives Livewire DOM morphing)
-        document.addEventListener('focusin', function(e) {
-            const container = e.target.closest('[data-section]');
-            if (container) {
-                sendScroll(container.getAttribute('data-section'));
-            }
-        });
-
-        document.addEventListener('click', function(e) {
-            const container = e.target.closest('[data-section]');
-            if (container) {
-                sendScroll(container.getAttribute('data-section'));
-            }
-        });
-
-        // 2. Livewire State Updates
-        window.addEventListener('content-updated', function(event) {
-            const iframe = getIframe();
-            const detail = event.detail?.[0] || event.detail;
-
-            if (iframe && iframe.contentWindow && detail?.state) {
-                iframe.contentWindow.postMessage({
-                    type: 'TET_LIVE_PREVIEW',
-                    state: detail.state
-                }, '*');
-
-                if (detail.targetSection) {
-                    sendScroll(detail.targetSection);
-                }
-            }
-        });
-    })();
-    </script>
+    // 3. Initial load sync when iframe finishes loading
+    window.addEventListener('load', function() {
+        const iframe = getIframe();
+        if (iframe) {
+            iframe.addEventListener('load', function() {
+                @this.call('syncIframe');
+            });
+        }
+    });
+})();
+</script>
 </div>

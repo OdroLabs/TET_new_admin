@@ -14,12 +14,34 @@ class ManageOrders extends Component
     public $typeFilter = 'all';
     public $statusFilter = 'all';
 
+    // ✅ CRUCIAL FIX: Reset pagination when filters or search change
+    public function updatedSearch()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedTypeFilter()
+    {
+        $this->resetPage();
+    }
+
+    public function updatedStatusFilter()
+    {
+        $this->resetPage();
+    }
+
     public function updateStatus($id, $status)
     {
+        // Guard against invalid status values
+        if (!in_array($status, ['new', 'contacted', 'completed'])) {
+            return;
+        }
+
         $inquiry = EnterpriseInquiry::findOrFail($id);
         $inquiry->status = $status;
         $inquiry->save();
-        session()->flash('message', "Order {$inquiry->reference} status changed to {$status}!");
+
+        session()->flash('message', "Order {$inquiry->reference} marked as {$status}.");
     }
 
     public function deleteInquiry($id)
@@ -36,6 +58,7 @@ class ManageOrders extends Component
             $query->where(function($q) {
                 $q->where('customer_name', 'like', '%' . $this->search . '%')
                   ->orWhere('customer_phone', 'like', '%' . $this->search . '%')
+                  ->orWhere('customer_email', 'like', '%' . $this->search . '%')
                   ->orWhere('reference', 'like', '%' . $this->search . '%')
                   ->orWhere('item_name', 'like', '%' . $this->search . '%');
             });

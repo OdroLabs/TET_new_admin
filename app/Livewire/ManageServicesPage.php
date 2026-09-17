@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 
 class ManageServicesPage extends Component
 {
@@ -39,7 +40,7 @@ class ManageServicesPage extends Component
             $this->loadKey("service_{$i}_title");
             $this->loadKey("service_{$i}_desc");
             $this->loadKey("service_{$i}_tag");
-            $this->existing["service_{$i}_img"] = Setting::where('key', "service_{$i}_img")->first()?->value;
+            $this->existing["service_{$i}_img"] = $this->cleanValue(Setting::where('key', "service_{$i}_img")->first());
         }
 
         // 3. 3 Process Steps
@@ -50,34 +51,54 @@ class ManageServicesPage extends Component
 
         // 4. Button URL & Hero Image
         $urlSetting = Setting::where('key', 'btn_request_url')->first();
-        $this->urls['btn_request_url'] = $urlSetting ? $urlSetting->getRawOriginal('value') : '/contact';
-        $this->existing['hero_bg'] = Setting::where('key', 'service_hero_bg')->first()?->value;
+        $this->urls['btn_request_url'] = $urlSetting ? $this->cleanValue($urlSetting) : '/contact';
+        $this->existing['hero_bg'] = $this->cleanValue(Setting::where('key', 'service_hero_bg')->first());
+    }
+
+    private function cleanValue($setting): ?string
+    {
+        if (!$setting) return null;
+        $val = $setting->getRawOriginal('value');
+        if (!$val) return null;
+
+        if (is_array($val)) return $val['en'] ?? reset($val) ?? null;
+
+        if (is_string($val) && (str_starts_with($val, '{') || str_starts_with($val, '['))) {
+            $decoded = json_decode($val, true);
+            if (is_array($decoded)) return $decoded['en'] ?? reset($decoded) ?? null;
+        }
+        return trim($val, "\"'");
     }
 
     private function loadKey($key)
     {
         $setting = Setting::where('key', $key)->first();
         $this->state[$key] = [
-            'en' => $setting ? $setting->getTranslation('value', 'en') : '',
-            'si' => $setting ? $setting->getTranslation('value', 'si') : '',
-            'ta' => $setting ? $setting->getTranslation('value', 'ta') : '',
+            'en' => $setting ? $setting->getTranslation('value', 'en', false) : '',
+            'si' => $setting ? $setting->getTranslation('value', 'si', false) : '',
+            'ta' => $setting ? $setting->getTranslation('value', 'ta', false) : '',
         ];
     }
 
-    public function updated($propertyName)
+    public function getFullPreviewStateProperty(): array
     {
         $previewData = array_merge($this->state, $this->urls);
 
-        $previewData['service_hero_bg'] = $this->hero_bg 
+        $previewData['service_hero_bg'] = $this->hero_bg && method_exists($this->hero_bg, 'temporaryUrl')
             ? $this->hero_bg->temporaryUrl() 
             : ($this->existing['hero_bg'] ?? null);
 
         for ($i = 1; $i <= 6; $i++) {
-            $previewData["service_{$i}_img"] = isset($this->service_images[$i])
+            $previewData["service_{$i}_img"] = (isset($this->service_images[$i]) && method_exists($this->service_images[$i], 'temporaryUrl'))
                 ? $this->service_images[$i]->temporaryUrl()
                 : ($this->existing["service_{$i}_img"] ?? null);
         }
 
+        return $previewData;
+    }
+
+    public function updated($propertyName)
+    {
         $targetSection = 'services-hero';
         $cardIndex = null;
 
@@ -93,15 +114,21 @@ class ManageServicesPage extends Component
         }
 
         $this->dispatch('content-updated', [
-            'state' => $previewData,
+            'state' => $this->full_preview_state,
             'targetSection' => $targetSection,
             'cardIndex' => $cardIndex,
         ]);
     }
 
-   public function save()
+    public function save()
     {
-        // 1. Save all translated text fields
+        // 1. Validate images
+        $this->validate([
+            'hero_bg' => 'nullable|image|max:10240',
+            'service_images.*' => 'nullable|image|max:10240',
+        ]);
+
+        // 2. Save all translated text fields
         foreach ($this->state as $key => $translations) {
             $setting = Setting::firstOrNew(['key' => $key]);
             foreach ($translations as $lang => $val) {
@@ -110,6 +137,7 @@ class ManageServicesPage extends Component
             $setting->save();
         }
 
+        // 3. Save URLs
         foreach ($this->urls as $key => $val) {
             Setting::updateOrCreate(
                 ['key' => $key],
@@ -117,47 +145,42 @@ class ManageServicesPage extends Component
             );
         }
 
+        // 4. Save Hero Background
         if ($this->hero_bg) {
             $path = $this->hero_bg->store('services', 'public');
-            
             Setting::updateOrCreate(
                 ['key' => 'service_hero_bg'],
                 ['value' => $path]
             );
-
             $this->existing['hero_bg'] = $path;
-            $this->hero_bg = null; // Clear upload input
+            $this->hero_bg = null;
         }
 
-        // 4. Save 6 Service Images with updateOrCreate
+        // 5. Save 6 Service Images
         foreach ($this->service_images as $index => $file) {
             if ($file) {
                 $path = $file->store('services', 'public');
-                
                 Setting::updateOrCreate(
                     ['key' => "service_{$index}_img"],
                     ['value' => $path]
                 );
-
                 $this->existing["service_{$index}_img"] = $path;
             }
         }
         $this->service_images = [];
 
-        $previewData = array_merge($this->state, $this->urls);
-        $previewData['service_hero_bg'] = $this->existing['hero_bg'] ?? null;
-        for ($i = 1; $i <= 6; $i++) {
-            $previewData["service_{$i}_img"] = $this->existing["service_{$i}_img"] ?? null;
-        }
+        // ✅ CRUCIAL FIX: Clear cache so API serves fresh settings immediately
+        Cache::forget('api_settings_map');
 
-        $this->dispatch('content-updated', [
-            'state' => $previewData,
+        // ✅ CRUCIAL FIX: Notify iframe to reload settings
+        $this->dispatch('settings-published', [
+            'state' => $this->full_preview_state,
             'targetSection' => 'services-hero',
         ]);
-        $this->dispatch('reload-settings');
 
         session()->flash('message', 'Services & support protocol published successfully!');
     }
+
     public function render()
     {
         return view('livewire.manage-services-page')->layout('components.layouts.admin');

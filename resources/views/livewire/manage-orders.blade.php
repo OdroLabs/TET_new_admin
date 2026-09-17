@@ -74,13 +74,18 @@
             </thead>
             <tbody class="divide-y divide-slate-100">
                 @forelse($inquiries as $inq)
-                    <tr class="hover:bg-slate-50/60 transition-colors">
+                    <!-- ✅ CRUCIAL FIX: Added wire:key to prevent DOM morphing glitches -->
+                    <tr wire:key="inquiry-{{ $inq->id }}" class="hover:bg-slate-50/60 transition-colors">
                         <td class="py-4 px-6 font-mono font-bold text-[#1A365D]">{{ $inq->reference }}</td>
                         <td class="py-4 px-6">
                             <span class="font-bold block text-slate-800">{{ $inq->customer_name }}</span>
-                            <span class="text-[10px] text-sky-700 font-semibold block">📞 {{ $inq->customer_phone }}</span>
+                            <a href="tel:{{ $inq->customer_phone }}" class="text-[10px] text-sky-700 hover:underline font-semibold block">
+                                📞 {{ $inq->customer_phone }}
+                            </a>
                             @if($inq->customer_email)
-                                <span class="text-[10px] text-slate-400">{{ $inq->customer_email }}</span>
+                                <a href="mailto:{{ $inq->customer_email }}" class="text-[10px] text-slate-400 hover:underline">
+                                    {{ $inq->customer_email }}
+                                </a>
                             @endif
                         </td>
                         <td class="py-4 px-6">
@@ -106,18 +111,43 @@
                                 <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 font-bold text-[10px]">✓ Completed</span>
                             @endif
                         </td>
-                        <td class="py-4 px-6 text-slate-400 text-[10px]">{{ $inq->created_at->format('M d, Y • h:i A') }}</td>
+                        <td class="py-4 px-6 text-slate-400 text-[10px]">
+                            {{ $inq->created_at?->format('M d, Y • h:i A') ?? 'N/A' }}
+                        </td>
                         <td class="py-4 px-6 text-right space-x-1">
                             @if($inq->status === 'new')
-                                <button wire:click="updateStatus({{ $inq->id }}, 'contacted')" class="px-3 py-1 rounded-full bg-sky-600 hover:bg-sky-700 text-white font-bold text-[10px]">
-                                    Contacted
+                                <button 
+                                    wire:click="updateStatus({{ $inq->id }}, 'contacted')" 
+                                    wire:loading.attr="disabled"
+                                    class="px-3 py-1 rounded-full bg-sky-600 hover:bg-sky-700 disabled:opacity-50 text-white font-bold text-[10px] cursor-pointer"
+                                >
+                                    Mark Contacted
                                 </button>
                             @elseif($inq->status === 'contacted')
-                                <button wire:click="updateStatus({{ $inq->id }}, 'completed')" class="px-3 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[10px]">
-                                    Complete
+                                <button 
+                                    wire:click="updateStatus({{ $inq->id }}, 'completed')" 
+                                    wire:loading.attr="disabled"
+                                    class="px-3 py-1 rounded-full bg-emerald-600 hover:bg-emerald-700 disabled:opacity-50 text-white font-bold text-[10px] cursor-pointer"
+                                >
+                                    Mark Complete
+                                </button>
+                            @else
+                                <!-- Allows reopening a completed order if clicked by mistake -->
+                                <button 
+                                    wire:click="updateStatus({{ $inq->id }}, 'contacted')" 
+                                    wire:loading.attr="disabled"
+                                    class="px-2.5 py-0.5 rounded-full border border-slate-200 hover:bg-slate-100 text-slate-500 font-bold text-[9px] cursor-pointer"
+                                >
+                                    Reopen
                                 </button>
                             @endif
-                            <button wire:click="deleteInquiry({{ $inq->id }})" wire:confirm="Remove this inquiry record?" class="text-red-500 hover:text-red-700 font-bold px-2 py-1">
+
+                            <button 
+                                wire:click="deleteInquiry({{ $inq->id }})" 
+                                wire:confirm="Remove this inquiry record?" 
+                                class="text-red-400 hover:text-red-600 font-bold px-2 py-1 cursor-pointer"
+                                title="Delete Inquiry"
+                            >
                                 ✕
                             </button>
                         </td>
@@ -130,8 +160,10 @@
             </tbody>
         </table>
 
-        <div class="p-4 border-t border-slate-100">
-            {{ $inquiries->links() }}
-        </div>
+        @if($inquiries->hasPages())
+            <div class="p-4 border-t border-slate-100">
+                {{ $inquiries->links() }}
+            </div>
+        @endif
     </div>
 </div>

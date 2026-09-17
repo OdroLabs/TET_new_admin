@@ -6,15 +6,13 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use App\Models\Event;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Cache;
 
 class ManageGalleryPage extends Component
 {
     use WithFileUploads;
 
-    // Header State
     public $state = [];
-
-    // Active Event Editing
     public $editingId = null;
     public $eventState = [
         'title' => ['en' => '', 'si' => '', 'ta' => ''],
@@ -41,9 +39,9 @@ class ManageGalleryPage extends Component
         foreach ($this->headerKeys as $key) {
             $setting = Setting::where('key', $key)->first();
             $this->state[$key] = [
-                'en' => $setting ? $setting->getTranslation('value', 'en') : '',
-                'si' => $setting ? $setting->getTranslation('value', 'si') : '',
-                'ta' => $setting ? $setting->getTranslation('value', 'ta') : '',
+                'en' => $setting ? $setting->getTranslation('value', 'en', false) : '',
+                'si' => $setting ? $setting->getTranslation('value', 'si', false) : '',
+                'ta' => $setting ? $setting->getTranslation('value', 'ta', false) : '',
             ];
         }
     }
@@ -53,7 +51,6 @@ class ManageGalleryPage extends Component
         return Event::orderBy('order', 'asc')->get();
     }
 
-    // ➕ New Event
     public function newEvent()
     {
         $this->editingId = 'new';
@@ -77,37 +74,36 @@ class ManageGalleryPage extends Component
         ]);
     }
 
-    // ✏️ Edit Existing Event
     public function editEvent($id)
     {
         $ev = Event::findOrFail($id);
         $this->editingId = $id;
         $this->eventState = [
             'title' => [
-                'en' => $ev->getTranslation('title', 'en') ?: '',
-                'si' => $ev->getTranslation('title', 'si') ?: '',
-                'ta' => $ev->getTranslation('title', 'ta') ?: '',
+                'en' => $ev->getTranslation('title', 'en', false) ?: '',
+                'si' => $ev->getTranslation('title', 'si', false) ?: '',
+                'ta' => $ev->getTranslation('title', 'ta', false) ?: '',
             ],
             'cat' => [
-                'en' => $ev->getTranslation('cat', 'en') ?: '',
-                'si' => $ev->getTranslation('cat', 'si') ?: '',
-                'ta' => $ev->getTranslation('cat', 'ta') ?: '',
+                'en' => $ev->getTranslation('cat', 'en', false) ?: '',
+                'si' => $ev->getTranslation('cat', 'si', false) ?: '',
+                'ta' => $ev->getTranslation('cat', 'ta', false) ?: '',
             ],
             'date' => $ev->date ?: '',
             'location' => [
-                'en' => $ev->getTranslation('location', 'en') ?: '',
-                'si' => $ev->getTranslation('location', 'si') ?: '',
-                'ta' => $ev->getTranslation('location', 'ta') ?: '',
+                'en' => $ev->getTranslation('location', 'en', false) ?: '',
+                'si' => $ev->getTranslation('location', 'si', false) ?: '',
+                'ta' => $ev->getTranslation('location', 'ta', false) ?: '',
             ],
             'excerpt' => [
-                'en' => $ev->getTranslation('excerpt', 'en') ?: '',
-                'si' => $ev->getTranslation('excerpt', 'si') ?: '',
-                'ta' => $ev->getTranslation('excerpt', 'ta') ?: '',
+                'en' => $ev->getTranslation('excerpt', 'en', false) ?: '',
+                'si' => $ev->getTranslation('excerpt', 'si', false) ?: '',
+                'ta' => $ev->getTranslation('excerpt', 'ta', false) ?: '',
             ],
             'full_story' => [
-                'en' => $ev->getTranslation('full_story', 'en') ?: '',
-                'si' => $ev->getTranslation('full_story', 'si') ?: '',
-                'ta' => $ev->getTranslation('full_story', 'ta') ?: '',
+                'en' => $ev->getTranslation('full_story', 'en', false) ?: '',
+                'si' => $ev->getTranslation('full_story', 'si', false) ?: '',
+                'ta' => $ev->getTranslation('full_story', 'ta', false) ?: '',
             ],
         ];
 
@@ -124,7 +120,6 @@ class ManageGalleryPage extends Component
         ]);
     }
 
-    // 💾 Save Event
     public function saveEvent()
     {
         if ($this->editingId === 'new') {
@@ -134,6 +129,9 @@ class ManageGalleryPage extends Component
             $ev = Event::findOrFail($this->editingId);
         }
 
+        // CRUCIAL: Ensure the event is marked published so the API serves it
+        $ev->is_published = true;
+
         foreach (['title', 'cat', 'location', 'excerpt', 'full_story'] as $field) {
             foreach ($this->eventState[$field] as $lang => $val) {
                 $ev->setTranslation($field, $lang, $val ?? '');
@@ -141,12 +139,10 @@ class ManageGalleryPage extends Component
         }
         $ev->date = $this->eventState['date'] ?? strtoupper(date('M d, Y'));
 
-        // Handle Cover Image
         if ($this->coverImage) {
             $ev->cover_image = $this->coverImage->store('gallery', 'public');
         }
 
-        // Handle Sub-Gallery Images
         $gallery = $this->existingGalleryImages;
         if ($this->galleryImage1) {
             $gallery[0] = $this->galleryImage1->store('gallery', 'public');
@@ -157,6 +153,10 @@ class ManageGalleryPage extends Component
         $ev->gallery_images = array_values(array_filter($gallery));
 
         $ev->save();
+
+        // Invalidate events cache
+        Cache::forget('api_events_list');
+
         $this->editingId = null;
         $this->coverImage = null;
         $this->galleryImage1 = null;
@@ -166,15 +166,17 @@ class ManageGalleryPage extends Component
         $this->dispatch('reload-frontend-collection');
     }
 
-    // 🗑️ Delete Event
     public function deleteEvent($id)
     {
         Event::findOrFail($id)->delete();
+
+        // Invalidate events cache
+        Cache::forget('api_events_list');
+
         session()->flash('message', 'Event removed!');
         $this->dispatch('reload-frontend-collection');
     }
 
-    // Save Headers
     public function saveHeaders()
     {
         foreach ($this->state as $key => $translations) {
@@ -184,14 +186,21 @@ class ManageGalleryPage extends Component
             }
             $setting->save();
         }
+
+        // Invalidate settings cache
+        Cache::forget('api_settings_map');
+
         session()->flash('message', 'Header content saved!');
+        $this->dispatch('settings-published', [
+            'state' => $this->state,
+            'targetSection' => 'gallery-events'
+        ]);
     }
 
     public function updated($propertyName)
     {
-        $previewData = $this->state;
         $this->dispatch('content-updated', [
-            'state' => $previewData,
+            'state' => $this->state,
             'eventId' => is_numeric($this->editingId) ? $this->editingId : null,
         ]);
     }

@@ -3,8 +3,8 @@
     <!-- LEFT: SCROLLABLE EDITOR -->
     <div class="w-full lg:w-[650px] h-full overflow-y-auto p-8 lg:p-10 border-r border-slate-200 scroll-smooth">
         <header class="mb-8">
-            <h2 class="font-serif text-3xl font-bold italic text-[#1A365D]">Services & Protocols</h2>
-            <p class="text-slate-400 text-[9px] mt-1 font-bold uppercase tracking-widest">Management of Care Infrastructure & Emergency Services</p>
+            <h2 class="font-serif text-3xl font-bold italic text-[#1A365D]">Services &amp; Protocols</h2>
+            <p class="text-slate-400 text-[9px] mt-1 font-bold uppercase tracking-widest">Management of Care Infrastructure &amp; Emergency Services</p>
             
             @if (session()->has('message'))
                 <div class="mt-4 p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold">
@@ -28,10 +28,27 @@
 
                 <div class="p-4 bg-slate-50 rounded-2xl border border-slate-100">
                     <label class="text-[9px] font-bold uppercase text-slate-500 mb-1 block">Hero Background Image</label>
-                    <input type="file" wire:model="hero_bg" class="text-[10px] w-full">
-                    @if(!empty($existing['hero_bg']))
-                        <p class="text-[8px] text-slate-400 mt-1">Current: {{ $existing['hero_bg'] }}</p>
+                    
+                    @if ($hero_bg)
+                        <div class="mb-2">
+                            <span class="text-[8px] text-blue-600 font-bold block mb-1">New Image Preview:</span>
+                            <img src="{{ $hero_bg->temporaryUrl() }}" class="w-24 h-16 object-cover rounded-xl border border-blue-300">
+                        </div>
+                    @elseif(!empty($existing['hero_bg']))
+                        <div class="mb-2">
+                            <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
+                            <img src="{{ asset('storage/' . $existing['hero_bg']) }}" class="w-24 h-16 object-cover rounded-xl border border-slate-200">
+                        </div>
                     @endif
+
+                    <input type="file" wire:model="hero_bg" class="text-[10px] w-full">
+                    
+                    <div wire:loading wire:target="hero_bg" class="text-[9px] text-blue-600 font-semibold mt-1">
+                        Uploading image, please wait...
+                    </div>
+                    @error('hero_bg') 
+                        <span class="text-[9px] text-red-500 font-bold block mt-1">{{ $message }}</span> 
+                    @enderror
                 </div>
             </div>
 
@@ -57,9 +74,6 @@
                     >
                         <div class="flex items-center justify-between">
                             <p class="text-[9px] font-black text-[#1A365D] uppercase tracking-widest">Card 0{{$i}}</p>
-                            @if(!empty($existing["service_{$i}_img"]))
-                                <span class="text-[8px] font-bold text-slate-400">Image uploaded</span>
-                            @endif
                         </div>
 
                         @include('livewire.partials.trilingual-input', ['label' => 'Category Tag', 'key' => "service_{$i}_tag"])
@@ -68,7 +82,27 @@
 
                         <div>
                             <label class="text-[8px] font-black text-slate-400 uppercase tracking-widest block mb-1">Card Photo</label>
+                            
+                            @if (isset($service_images[$i]))
+                                <div class="mb-2">
+                                    <span class="text-[8px] text-pink-600 font-bold block mb-1">New Photo Preview:</span>
+                                    <img src="{{ $service_images[$i]->temporaryUrl() }}" class="w-20 h-14 object-cover rounded-xl border border-pink-300">
+                                </div>
+                            @elseif(!empty($existing["service_{$i}_img"]))
+                                <div class="mb-2">
+                                    <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
+                                    <img src="{{ asset('storage/' . $existing["service_{$i}_img"]) }}" class="w-20 h-14 object-cover rounded-xl border border-slate-200">
+                                </div>
+                            @endif
+
                             <input type="file" wire:model="service_images.{{$i}}" class="text-[10px] w-full">
+                            
+                            <div wire:loading wire:target="service_images.{{$i}}" class="text-[8px] text-pink-600 font-semibold mt-1">
+                                Uploading photo...
+                            </div>
+                            @error("service_images.{$i}")
+                                <span class="text-[8px] text-red-500 font-bold block mt-1">{{ $message }}</span>
+                            @enderror
                         </div>
                     </div>
                 @endfor
@@ -107,10 +141,23 @@
                 @include('livewire.partials.trilingual-input', ['label' => 'Hotline / Phone Number', 'key' => 's_emergency_phone'])
             </div>
 
-            <!-- STICKY ACTION BUTTON -->
+            <!-- STICKY ACTION BUTTON WITH LOADING SAFEGUARD -->
             <div class="sticky bottom-6 z-30">
-                <button type="submit" class="w-full bg-[#1A365D] text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl hover:-translate-y-0.5 active:translate-y-0 transition-all">
-                    Publish Services Page
+                <button 
+                    type="submit" 
+                    wire:loading.attr="disabled"
+                    wire:target="save, hero_bg, service_images"
+                    class="w-full bg-[#1A365D] hover:bg-slate-800 disabled:opacity-50 text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl transition-all cursor-pointer"
+                >
+                    <span wire:loading.remove wire:target="save, hero_bg, service_images">
+                        Publish Services Page
+                    </span>
+                    <span wire:loading wire:target="save">
+                        Publishing Services...
+                    </span>
+                    <span wire:loading wire:target="hero_bg, service_images">
+                        Uploading images, please wait...
+                    </span>
                 </button>
             </div>
         </form>
@@ -118,7 +165,8 @@
 
     <!-- RIGHT: PREVIEW (IFRAME) -->
     <x-preview-panel :url="env('FRONTEND_URL', 'https://tet-frontend.vercel.app') . '/services'" />
-    <!-- DELEGATED LIVE SCROLL SCRIPT -->
+
+    <!-- DELEGATED LIVE SCROLL & PREVIEW SCRIPT -->
     <script>
     (function() {
         const getIframe = () => document.getElementById('preview-iframe');
@@ -134,7 +182,6 @@
             }, '*');
         }
 
-        // Delegated Focus & Click listeners (survives Livewire DOM morphing)
         document.addEventListener('focusin', function(e) {
             const container = e.target.closest('[data-section]');
             if (container) {
@@ -155,13 +202,7 @@
             }
         });
 
-        window.addEventListener('reload-settings', function() {
-            const iframe = getIframe();
-            if (iframe && iframe.contentWindow) {
-                iframe.contentWindow.postMessage({ type: 'TET_RELOAD_SETTINGS' }, '*');
-            }
-        });
-
+        // When typing or choosing images (Live Preview)
         window.addEventListener('content-updated', function(event) {
             const iframe = getIframe();
             const detail = event.detail?.[0] || event.detail;
@@ -175,6 +216,22 @@
                 if (detail.targetSection) {
                     sendScroll(detail.targetSection, detail.cardIndex);
                 }
+            }
+        });
+
+        // When "Publish Services Page" is clicked
+        window.addEventListener('settings-published', function(event) {
+            const iframe = getIframe();
+            if (!iframe || !iframe.contentWindow) return;
+
+            iframe.contentWindow.postMessage({ type: 'TET_RELOAD_SETTINGS' }, '*');
+
+            const detail = event.detail?.[0] || event.detail;
+            if (detail?.state) {
+                iframe.contentWindow.postMessage({
+                    type: 'TET_LIVE_PREVIEW',
+                    state: detail.state
+                }, '*');
             }
         });
     })();
