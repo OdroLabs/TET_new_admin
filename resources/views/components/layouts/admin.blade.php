@@ -131,7 +131,6 @@
                         @if(request()->is('admin/booking')) <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> @endif
                     </a>
                 </div>
-
                 <!-- 2. ADVOCACY & MEDIA PUBLISHING -->
                 <div class="space-y-1">
                     <div class="px-3 pb-2 flex items-center gap-2">
