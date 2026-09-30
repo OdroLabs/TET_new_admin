@@ -2,14 +2,11 @@
 namespace Tests\Feature;
 
 use App\Livewire\ManageFooter;
-use App\Livewire\ManageSiteWording;
 use App\Models\Setting;
 use App\Models\User;
 use Database\Seeders\SiteContentSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
 use Tests\TestCase;
 
@@ -59,48 +56,6 @@ class SiteContentTest extends TestCase
             ->assertCreated()
             ->assertJsonPath('bank_details.account_number', '1234-5678')
             ->assertJsonPath('bank_details.bank_name', 'Commercial Bank of Ceylon');
-    }
-
-    public function test_site_wording_page()
-    {
-        $cdn = 'https://ngowebsites.sfo3.cdn.digitaloceanspaces.com';
-        Storage::fake('spaces', ['url' => $cdn . '/TET']);
-        config(['filesystems.disks.spaces.url' => $cdn]);
-
-        $this->get('/admin/site-wording')->assertRedirect('/admin/login');
-        $this->actingAs(User::factory()->create());
-        $this->get('/admin/site-wording')->assertOk()->assertSee('Site Wording')->assertSee('nav_about');
-
-        // every tab renders
-        foreach (array_keys(ManageSiteWording::GROUPS) as $g) {
-            Livewire::test(ManageSiteWording::class)->set('group', $g)->assertOk();
-        }
-
-        // search across tabs
-        $c = Livewire::test(ManageSiteWording::class)->set('search', 'crisis intervention');
-        $this->assertNotEmpty($c->instance()->items);
-
-        // edit a UI label in 3 languages + a plain value + upload an image
-        Livewire::test(ManageSiteWording::class)
-            ->set('group', 'booking')
-            ->set('values.ui_booking_submit.en', 'Send Request')
-            ->set('values.ui_booking_submit.si', 'යවන්න')
-            ->set('group', 'donate')    // switching tabs reloads values...
-            ->set('values.dn_amount_presets.en', '500, 2500')
-            ->set('uploads.seo_donate_og_image', UploadedFile::fake()->image('og.jpg'))
-            ->call('save')->assertHasNoErrors();
-
-        // ...so the booking edit made before switching tabs is discarded (by design), donate edits saved
-        $this->assertSame('Submit Commercial Request', Setting::text('ui_booking_submit'));
-        $this->assertSame('500, 2500', Setting::text('dn_amount_presets'));
-        $this->assertStringStartsWith($cdn . '/TET/site/', Setting::text('seo_donate_og_image'));
-
-        Livewire::test(ManageSiteWording::class)->set('group', 'booking')
-            ->set('values.ui_booking_submit.en', 'Send Request')->set('values.ui_booking_submit.si', 'යවන්න')
-            ->call('save');
-        $this->assertSame('Send Request', Setting::text('ui_booking_submit'));
-        $this->assertSame('යවන්න', Setting::text('ui_booking_submit', 'si'));
-        $this->assertSame('Send Request', $this->getJson('/api/settings')->json('ui_booking_submit.en'));
     }
 
     public function test_footer_editor_edits_footer_donate_button()

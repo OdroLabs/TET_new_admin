@@ -44,7 +44,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/project-list', \App\Livewire\ManageProjects::class);
     Route::get('/admin/service-list', \App\Livewire\ManageServices::class);
     Route::get('/admin/email-settings', \App\Livewire\ManageMailSettings::class);
-    Route::get('/admin/site-wording', \App\Livewire\ManageSiteWording::class);
     Route::get('/admin/site-status', \App\Livewire\ManageSiteStatus::class);
 });
 

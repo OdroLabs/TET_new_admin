@@ -54,7 +54,7 @@ class DonationController extends Controller
             'reference' => $donation->reference,
             'amount' => $donation->amount,
             'payment_method' => $donation->payment_method,
-            // Managed in Admin → Site Wording → Donate
+            // Stored in settings (dn_bank_*)
             'bank_details' => [
                 'bank_name' => Setting::text('dn_bank_name'),
                 'account_name' => Setting::text('dn_bank_account_name'),

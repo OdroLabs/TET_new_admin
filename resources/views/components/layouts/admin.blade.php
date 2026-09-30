@@ -260,14 +260,6 @@
                         @elseif(request()->is('admin/site-status')) <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> @endif
                     </a>
 
-                    <a href="/admin/site-wording" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/site-wording') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
-                        <div class="flex items-center gap-3">
-                            <span class="text-base group-hover:scale-110 transition-transform">🔤</span>
-                            <span>Site Wording</span>
-                        </div>
-                        @if(request()->is('admin/site-wording')) <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> @endif
-                    </a>
-
                     <a href="/admin/email-settings" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/email-settings') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
                         <div class="flex items-center gap-3">
                             <span class="text-base group-hover:scale-110 transition-transform">📧</span>
