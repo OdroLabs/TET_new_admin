@@ -3,7 +3,7 @@
     <!-- LEFT: SCROLLABLE CMS CONTROL PANEL -->
     <div class="w-full lg:w-[650px] h-full overflow-y-auto p-8 lg:p-10 border-r border-slate-200 scroll-smooth">
         <header class="mb-8">
-            <h2 class="font-serif text-3xl font-bold italic text-[#1A365D]">Project Portfolio</h2>
+            <h2 class="font-serif text-3xl font-bold italic text-[#1A365D]">Projects Page</h2>
             <p class="text-slate-400 text-[9px] mt-1 font-bold uppercase tracking-widest">Advocacy Initiatives &amp; Detailed Case Studies</p>
             
             @if (session()->has('message'))
@@ -28,79 +28,16 @@
                 @include('livewire.partials.trilingual-input', ['label' => 'Hero Description', 'key' => 'pj_hero_desc'])
             </div>
 
-            <!-- SECTION 2: 4 PROJECTS REPEATER -->
-            <div data-section="projects-grid" class="editor-section space-y-6 p-6 bg-white rounded-[2rem] border border-slate-100 shadow-sm transition-all focus-within:ring-2 focus-within:ring-pink-400">
-                <div class="flex items-center gap-2">
-                    <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
-                    <h3 class="text-[10px] font-black uppercase text-[#1A365D] tracking-wider">02. Strategic Projects (4 Cards + Detailed Modals)</h3>
-                </div>
-
-                @for($p = 1; $p <= 4; $p++)
-                    <div 
-                        data-card="{{ $p }}" 
-                        class="p-5 bg-slate-50 rounded-3xl border border-slate-200/70 space-y-4 transition-all hover:bg-pink-50/30"
-                    >
-                        <div class="flex items-center justify-between border-b border-slate-200/60 pb-2">
-                            <span class="text-[10px] font-black text-[#1A365D] uppercase tracking-widest">
-                                Project 0{{ $p }} Card &amp; Case Study
-                            </span>
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            @include('livewire.partials.trilingual-input', ['label' => 'Category Badge', 'key' => "pj_{$p}_cat"])
-                            @include('livewire.partials.trilingual-input', ['label' => 'Phase / Status Badge', 'key' => "pj_{$p}_status"])
-                        </div>
-
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                            @include('livewire.partials.trilingual-input', ['label' => 'Title Part 1', 'key' => "pj_{$p}_title1"])
-                            @include('livewire.partials.trilingual-input', ['label' => 'Title Part 2 (Gradient)', 'key' => "pj_{$p}_title2"])
-                        </div>
-
-                        @include('livewire.partials.trilingual-input', ['label' => 'Short Card Summary', 'key' => "pj_{$p}_desc"])
-
-                        <!-- DETAILED MODAL STORY -->
-                        <div class="space-y-2 pt-2 border-t border-slate-200/60">
-                            <label class="text-[9px] font-black text-pink-600 uppercase tracking-widest block">
-                                Comprehensive Case Study (Visible inside Modal)
-                            </label>
-                            <textarea wire:model.live.debounce.300ms="state.pj_{{ $p }}_long_desc.en" placeholder="Detailed English Project Story & Milestones..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs h-24 outline-none focus:ring-1 focus:ring-pink-400"></textarea>
-                            <textarea wire:model.live.debounce.300ms="state.pj_{{ $p }}_long_desc.si" placeholder="සිංහල විස්තරය..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs h-20 outline-none focus:ring-1 focus:ring-pink-400"></textarea>
-                            <textarea wire:model.live.debounce.300ms="state.pj_{{ $p }}_long_desc.ta" placeholder="தமிழ் விளக்கம்..." class="w-full bg-white border border-slate-200 rounded-xl px-3 py-2 text-xs h-20 outline-none focus:ring-1 focus:ring-pink-400"></textarea>
-                        </div>
-
-                        <!-- 3 GALLERY IMAGES PER PROJECT -->
-                        <div class="pt-2 border-t border-slate-200/60">
-                            <label class="text-[9px] font-bold text-slate-500 uppercase tracking-wider block mb-2">
-                                Photo Gallery (3 Photos for Viewer &amp; Modal)
-                            </label>
-                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                                @for($img = 1; $img <= 3; $img++)
-                                    @php $imgKey = "pj_{$p}_img{$img}"; @endphp
-                                    <div class="p-2 bg-white rounded-xl border border-slate-200">
-                                        <label class="text-[8px] font-bold text-slate-400 uppercase block mb-1">Image 0{{ $img }}</label>
-                                        
-                                        <!-- Preview -->
-                                        @if(!empty($images[$imgKey]))
-                                            <img src="{{ $images[$imgKey]->temporaryUrl() }}" class="w-full h-16 object-cover rounded-lg border border-pink-300 mb-1">
-                                        @elseif(!empty($existing[$imgKey]))
-                                            <img src="{{ asset('storage/' . $existing[$imgKey]) }}" class="w-full h-16 object-cover rounded-lg border border-slate-200 mb-1">
-                                        @endif
-
-                                        <input type="file" wire:model="images.{{ $imgKey }}" class="text-[9px] w-full">
-                                        
-                                        <div wire:loading wire:target="images.{{ $imgKey }}" class="text-[8px] text-pink-600 font-semibold mt-1">
-                                            Uploading...
-                                        </div>
-
-                                        @error("images.{$imgKey}")
-                                            <span class="text-[8px] text-red-500 font-bold block mt-1">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                @endfor
-                            </div>
-                        </div>
+            <!-- SECTION 2: PROJECT CARDS (managed separately) -->
+            <div data-section="projects-grid" class="editor-section p-6 bg-white rounded-[2rem] border border-slate-100 shadow-sm flex items-center justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="w-2.5 h-2.5 rounded-full bg-pink-500"></span>
+                        <h3 class="text-[10px] font-black uppercase text-[#1A365D] tracking-wider">02. Project Cards</h3>
                     </div>
-                @endfor
+                    <p class="text-xs text-slate-500 mt-2">Add, edit, reorder or hide any number of projects in the Projects Manager.</p>
+                </div>
+                <a href="/admin/project-list" class="shrink-0 bg-pink-600 hover:bg-pink-700 text-white px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest">Open Manager →</a>
             </div>
 
             <!-- SECTION 3: CTA -->
@@ -122,7 +59,7 @@
                     class="w-full bg-[#1A365D] hover:bg-slate-800 disabled:opacity-50 text-white py-4 rounded-full font-bold text-xs uppercase tracking-[0.25em] shadow-xl hover:shadow-2xl transition-all cursor-pointer"
                 >
                     <span wire:loading.remove wire:target="save, images">
-                        Publish Projects Portfolio
+                        Publish Page Copy
                     </span>
                     <span wire:loading wire:target="save">
                         Publishing Projects...

@@ -105,10 +105,8 @@ class ManageProducts extends Component
 
         if ($this->productImage) {
             // Delete old file if updating
-            if ($prod->image && Storage::disk('public')->exists($prod->image)) {
-                Storage::disk('public')->delete($prod->image);
-            }
-            $prod->image = $this->productImage->store('products', 'public');
+            \App\Support\Media::delete($prod->image);
+            $prod->image = \App\Support\Media::store($this->productImage, 'products');
         }
 
         $prod->save();
@@ -139,9 +137,7 @@ class ManageProducts extends Component
     public function deleteProduct($id)
     {
         $prod = Product::findOrFail($id);
-        if ($prod->image && Storage::disk('public')->exists($prod->image)) {
-            Storage::disk('public')->delete($prod->image);
-        }
+        \App\Support\Media::delete($prod->image);
         $prod->delete();
 
         // ✅ CRUCIAL FIX: Clear cache on delete

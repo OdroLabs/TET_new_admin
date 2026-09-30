@@ -146,7 +146,7 @@ class ManageAboutPage extends Component
     private function uploadImage($field)
     {
         if ($this->$field) {
-            $path = $this->$field->store('about', 'public');
+            $path = \App\Support\Media::store($this->$field, 'about');
 
             Setting::updateOrCreate(
                 ['key' => $field],

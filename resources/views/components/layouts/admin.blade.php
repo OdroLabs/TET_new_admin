@@ -110,9 +110,17 @@
                     <a href="/admin/services" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/services') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
                         <div class="flex items-center gap-3">
                             <span class="text-base group-hover:scale-110 transition-transform">🛠️</span>
-                            <span>Core Services</span>
+                            <span>Services Page</span>
                         </div>
                         @if(request()->is('admin/services')) <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> @endif
+                    </a>
+
+                    <a href="/admin/service-list" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/service-list') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-base group-hover:scale-110 transition-transform">🧩</span>
+                            <span>Services Manager</span>
+                        </div>
+                        @if(request()->is('admin/service-list')) <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span> @endif
                     </a>
 
                     <a href="/admin/booking" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/booking') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
@@ -134,9 +142,17 @@
                     <a href="/admin/projects" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/projects') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
                         <div class="flex items-center gap-3">
                             <span class="text-base group-hover:scale-110 transition-transform">📊</span>
-                            <span>Strategic Projects</span>
+                            <span>Projects Page</span>
                         </div>
                         @if(request()->is('admin/projects')) <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span> @endif
+                    </a>
+
+                    <a href="/admin/project-list" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/project-list') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-base group-hover:scale-110 transition-transform">🗂️</span>
+                            <span>Projects Manager</span>
+                        </div>
+                        @if(request()->is('admin/project-list')) <span class="w-1.5 h-1.5 rounded-full bg-pink-400"></span> @endif
                     </a>
 
                     <a href="/admin/news" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/news') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
@@ -225,6 +241,40 @@
                             <span>Donation Ledger</span>
                         </div>
                         @if(request()->is('admin/donations')) <span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> @endif
+                    </a>
+                </div>
+
+                <!-- 5. SYSTEM -->
+                <div class="space-y-1 pb-4">
+                    <div class="px-3 pb-2 flex items-center gap-2">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-400/50"></span>
+                        <span class="text-[9px] uppercase tracking-[0.25em] text-amber-200/50 font-black">System</span>
+                    </div>
+
+                    <a href="/admin/site-status" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/site-status') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-base group-hover:scale-110 transition-transform">🚦</span>
+                            <span>Site Status</span>
+                        </div>
+                        @if(\App\Models\Setting::text('site_coming_soon') === '1')
+                            <span class="text-[8px] font-black uppercase tracking-wider bg-amber-400 text-amber-950 px-1.5 py-0.5 rounded">Coming Soon</span>
+                        @elseif(request()->is('admin/site-status')) <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> @endif
+                    </a>
+
+                    <a href="/admin/site-wording" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/site-wording') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-base group-hover:scale-110 transition-transform">🔤</span>
+                            <span>Site Wording</span>
+                        </div>
+                        @if(request()->is('admin/site-wording')) <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> @endif
+                    </a>
+
+                    <a href="/admin/email-settings" class="group flex items-center justify-between px-3.5 py-2.5 rounded-xl transition-all text-xs font-semibold {{ request()->is('admin/email-settings') ? 'bg-white/15 text-white shadow-sm border border-white/10' : 'text-white/70 hover:text-white hover:bg-white/5' }}">
+                        <div class="flex items-center gap-3">
+                            <span class="text-base group-hover:scale-110 transition-transform">📧</span>
+                            <span>Email &amp; SMTP</span>
+                        </div>
+                        @if(request()->is('admin/email-settings')) <span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> @endif
                     </a>
                 </div>
 

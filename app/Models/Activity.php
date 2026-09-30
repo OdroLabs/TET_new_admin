@@ -29,10 +29,6 @@ class Activity extends Model
             return null;
         }
 
-        if (filter_var($this->image, FILTER_VALIDATE_URL)) {
-            return $this->image;
-        }
-
-        return Storage::disk('public')->url($this->image);
+        return \App\Support\Media::url($this->image);
     }
 }

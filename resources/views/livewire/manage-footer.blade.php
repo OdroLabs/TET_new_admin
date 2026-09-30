@@ -76,7 +76,7 @@
                 @include('livewire.partials.trilingual-input', ['label' => 'Support Card Description', 'key' => 'footer_support_text'])
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-slate-100">
-                    @include('livewire.partials.trilingual-input', ['label' => 'Donate Button Text', 'key' => 'btn_donate'])
+                    @include('livewire.partials.trilingual-input', ['label' => 'Donate Button Text', 'key' => 'footer_btn_donate'])
                     <div>
                         <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Donate Destination Link</label>
                         <input type="text" wire:model.live.debounce.300ms="urls.footer_donate_url" placeholder="/donate" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-xs outline-none">

@@ -7,6 +7,7 @@ use App\Models\EnterpriseInquiry;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
+use App\Services\NotificationMailer;
 
 class EnterpriseInquiryController extends Controller
 {
@@ -38,6 +39,25 @@ class EnterpriseInquiryController extends Controller
             'message' => $validated['message'] ?? null,
             'status' => 'new',
         ]);
+
+        $label = $inquiry->type === 'product_order' ? 'Product Order' : 'Hall Booking';
+        NotificationMailer::notify(
+            'inquiries',
+            "New {$label} {$inquiry->reference} from {$inquiry->customer_name}",
+            "New {$label} Request",
+            [
+                'Reference' => $inquiry->reference,
+                'Type' => $label,
+                'Name' => $inquiry->customer_name,
+                'Phone' => $inquiry->customer_phone,
+                'Email' => $inquiry->customer_email,
+                'Item' => $inquiry->item_name,
+                'Quantity' => $inquiry->quantity,
+                'Estimated total' => $inquiry->estimated_total,
+                'Message' => $inquiry->message,
+            ],
+            $inquiry->customer_email,
+        );
 
         return response()->json([
             'success' => true,

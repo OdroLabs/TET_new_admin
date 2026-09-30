@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
             ActivitySeeder::class,
             EventSeeder::class,
             ProductSeeder::class,
+            ProjectSeeder::class,
+            ServiceSeeder::class,
+            SiteContentSeeder::class,
         ]);
     }
 }

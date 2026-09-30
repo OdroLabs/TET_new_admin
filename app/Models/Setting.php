@@ -12,6 +12,9 @@ class Setting extends Model
 
     protected $fillable = ['key', 'value'];
 
+    /** Never exposed through the public /api/settings feed. */
+    public const PRIVATE_KEYS = ['site_preview_key'];
+
     public $translatable = ['value'];
 
     protected static function booted()
@@ -24,6 +27,39 @@ class Setting extends Model
         static::deleted(function () {
             Cache::forget('api_settings_map');
         });
+    }
+
+    /** Store a language-independent value (flags, keys, URLs) as a plain string. */
+    public static function putPlain(string $key, string $value): void
+    {
+        \Illuminate\Support\Facades\DB::table('settings')->updateOrInsert(
+            ['key' => $key],
+            ['value' => $value, 'updated_at' => now()]
+        );
+        Cache::forget('api_settings_map');
+    }
+
+    /** The secret that lets the admin preview the real site while Coming Soon is on. */
+    public static function previewKey(): string
+    {
+        $key = static::text('site_preview_key');
+        if ($key === '') {
+            $key = \Illuminate\Support\Str::random(32);
+            static::putPlain('site_preview_key', $key);
+        }
+        return $key;
+    }
+
+    /** English (or plain) text of a setting, e.g. for API responses and emails. */
+    public static function text(string $key, string $locale = 'en'): string
+    {
+        $raw = static::query()->toBase()->where('key', $key)->value('value'); // raw JSON, not the translated accessor
+        if ($raw === null || $raw === '') return '';
+        $decoded = json_decode($raw, true);
+        if (is_array($decoded)) {
+            return (string) (($decoded[$locale] ?? '') !== '' ? $decoded[$locale] : ($decoded['en'] ?? ''));
+        }
+        return is_string($decoded) ? $decoded : trim($raw, "\"'");
     }
 
     public function isTranslatableAttribute(string $key): bool

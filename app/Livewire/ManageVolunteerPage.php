@@ -108,7 +108,7 @@ class ManageVolunteerPage extends Component
 
         foreach ($this->images as $key => $file) {
             if ($file) {
-                $path = $file->store('volunteer', 'public');
+                $path = \App\Support\Media::store($file, 'volunteer');
                 $imgSetting = Setting::firstOrNew(['key' => $key]);
                 $imgSetting->setRawAttributes([
                     'key' => $key,

@@ -48,17 +48,11 @@ class ManageHomePage extends Component
         }
 
         // 2. URLs
-        $urlDefaults = [
-            'btn_support_url' => '/donate',
-            'btn_mission_url' => '/about',
-            'view_journal_url' => '/news',
-            'story_video_url' => 'https://youtube.com',
-            'explore_services_url' => '/services',
-        ];
+
 
         foreach ($this->urlKeys as $key) {
             $setting = Setting::where('key', $key)->first();
-            $this->urls[$key] = $setting ? $setting->getRawOriginal('value') : ($urlDefaults[$key] ?? '');
+            $this->urls[$key] = $setting ? $setting->getRawOriginal('value') : '';
         }
 
         // 3. Existing single images
@@ -81,33 +75,11 @@ class ManageHomePage extends Component
             if (is_array($decoded) && isset($decoded[0])) {
                 $this->impact_cards = $decoded;
             } else {
-                $this->impact_cards = $this->getDefaultImpactCards();
+                $this->impact_cards = [];
             }
         } else {
-            $this->impact_cards = $this->getDefaultImpactCards();
+            $this->impact_cards = [];
         }
-    }
-
-    private function getDefaultImpactCards(): array
-    {
-        $defaults = [
-            ['cat' => 'Legal', 'title' => 'Human Rights Appeal', 'img' => 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f'],
-            ['cat' => 'Policy', 'title' => 'Consortium Meeting', 'img' => 'https://images.unsplash.com/photo-1517048676732-d65bc937f952'],
-            ['cat' => 'Community', 'title' => 'Safe-Space Unity', 'img' => 'https://images.unsplash.com/photo-1523240795612-9a054b0db644'],
-            ['cat' => 'Health', 'title' => 'Recovery Pathways', 'img' => 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8'],
-            ['cat' => 'Education', 'title' => 'Vocational Skills', 'img' => 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f'],
-            ['cat' => 'Inclusion', 'title' => 'Workplace Training', 'img' => 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d'],
-            ['cat' => 'Advocacy', 'title' => 'Global Representation', 'img' => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85'],
-            ['cat' => 'Unity', 'title' => 'Community Support', 'img' => 'https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8'],
-        ];
-
-        return array_map(function ($item) {
-            return [
-                'cat' => ['en' => $item['cat'], 'si' => $item['cat'], 'ta' => $item['cat']],
-                'title' => ['en' => $item['title'], 'si' => $item['title'], 'ta' => $item['title']],
-                'image' => $item['img'],
-            ];
-        }, $defaults);
     }
 
     public function updated($propertyName)
@@ -172,7 +144,7 @@ class ManageHomePage extends Component
 
         foreach ($this->impact_card_images as $idx => $file) {
             if ($file) {
-                $path = $file->store('homepage/impact', 'public');
+                $path = \App\Support\Media::store($file, 'homepage/impact');
                 $this->impact_cards[$idx]['image'] = $path;
             }
         }
@@ -196,7 +168,7 @@ class ManageHomePage extends Component
     private function uploadImage($field)
     {
         if ($this->$field) {
-            $path = $this->$field->store('homepage', 'public');
+            $path = \App\Support\Media::store($this->$field, 'homepage');
             $imageSetting = Setting::firstOrNew(['key' => $field]);
             $imageSetting->setRawAttributes([
                 'key' => $field,

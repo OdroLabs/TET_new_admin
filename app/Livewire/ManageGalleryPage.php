@@ -56,9 +56,9 @@ class ManageGalleryPage extends Component
         $this->editingId = 'new';
         $this->eventState = [
             'title' => ['en' => '', 'si' => '', 'ta' => ''],
-            'cat' => ['en' => 'Community Dialogue', 'si' => '', 'ta' => ''],
+            'cat' => ['en' => '', 'si' => '', 'ta' => ''],
             'date' => strtoupper(date('M d, Y')),
-            'location' => ['en' => 'Colombo, Sri Lanka', 'si' => '', 'ta' => ''],
+            'location' => ['en' => '', 'si' => '', 'ta' => ''],
             'excerpt' => ['en' => '', 'si' => '', 'ta' => ''],
             'full_story' => ['en' => '', 'si' => '', 'ta' => ''],
         ];
@@ -140,15 +140,15 @@ class ManageGalleryPage extends Component
         $ev->date = $this->eventState['date'] ?? strtoupper(date('M d, Y'));
 
         if ($this->coverImage) {
-            $ev->cover_image = $this->coverImage->store('gallery', 'public');
+            $ev->cover_image = \App\Support\Media::store($this->coverImage, 'gallery');
         }
 
         $gallery = $this->existingGalleryImages;
         if ($this->galleryImage1) {
-            $gallery[0] = $this->galleryImage1->store('gallery', 'public');
+            $gallery[0] = \App\Support\Media::store($this->galleryImage1, 'gallery');
         }
         if ($this->galleryImage2) {
-            $gallery[1] = $this->galleryImage2->store('gallery', 'public');
+            $gallery[1] = \App\Support\Media::store($this->galleryImage2, 'gallery');
         }
         $ev->gallery_images = array_values(array_filter($gallery));
 

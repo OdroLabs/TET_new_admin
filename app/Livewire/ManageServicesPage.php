@@ -14,7 +14,6 @@ class ManageServicesPage extends Component
     public $state = [];
     public $urls = [];
     public $hero_bg;
-    public $service_images = []; // Uploaded files for 6 services
     public $existing = [];
 
     protected $textKeys = [
@@ -35,13 +34,7 @@ class ManageServicesPage extends Component
             $this->loadKey($key);
         }
 
-        // 2. 6 Services
-        for ($i = 1; $i <= 6; $i++) {
-            $this->loadKey("service_{$i}_title");
-            $this->loadKey("service_{$i}_desc");
-            $this->loadKey("service_{$i}_tag");
-            $this->existing["service_{$i}_img"] = $this->cleanValue(Setting::where('key', "service_{$i}_img")->first());
-        }
+        // Service cards now live in the `services` table (Services Manager).
 
         // 3. 3 Process Steps
         for ($i = 1; $i <= 3; $i++) {
@@ -51,7 +44,7 @@ class ManageServicesPage extends Component
 
         // 4. Button URL & Hero Image
         $urlSetting = Setting::where('key', 'btn_request_url')->first();
-        $this->urls['btn_request_url'] = $urlSetting ? $this->cleanValue($urlSetting) : '/contact';
+        $this->urls['btn_request_url'] = $urlSetting ? $this->cleanValue($urlSetting) : '';
         $this->existing['hero_bg'] = $this->cleanValue(Setting::where('key', 'service_hero_bg')->first());
     }
 
@@ -88,11 +81,6 @@ class ManageServicesPage extends Component
             ? $this->hero_bg->temporaryUrl() 
             : ($this->existing['hero_bg'] ?? null);
 
-        for ($i = 1; $i <= 6; $i++) {
-            $previewData["service_{$i}_img"] = (isset($this->service_images[$i]) && method_exists($this->service_images[$i], 'temporaryUrl'))
-                ? $this->service_images[$i]->temporaryUrl()
-                : ($this->existing["service_{$i}_img"] ?? null);
-        }
 
         return $previewData;
     }
@@ -102,11 +90,8 @@ class ManageServicesPage extends Component
         $targetSection = 'services-hero';
         $cardIndex = null;
 
-        if (str_contains($propertyName, 'service_') || str_contains($propertyName, 'btn_request')) {
+        if (str_contains($propertyName, 'btn_request')) {
             $targetSection = 'services-grid';
-            if (preg_match('/service_(\d+)/', $propertyName, $matches)) {
-                $cardIndex = (int) $matches[1];
-            }
         } elseif (str_contains($propertyName, 'process') || str_contains($propertyName, 'proc')) {
             $targetSection = 'services-process';
         } elseif (str_contains($propertyName, 'emergency')) {
@@ -125,7 +110,6 @@ class ManageServicesPage extends Component
         // 1. Validate images
         $this->validate([
             'hero_bg' => 'nullable|image|max:10240',
-            'service_images.*' => 'nullable|image|max:10240',
         ]);
 
         // 2. Save all translated text fields
@@ -147,7 +131,7 @@ class ManageServicesPage extends Component
 
         // 4. Save Hero Background
         if ($this->hero_bg) {
-            $path = $this->hero_bg->store('services', 'public');
+            $path = \App\Support\Media::store($this->hero_bg, 'services');
             Setting::updateOrCreate(
                 ['key' => 'service_hero_bg'],
                 ['value' => $path]
@@ -156,18 +140,6 @@ class ManageServicesPage extends Component
             $this->hero_bg = null;
         }
 
-        // 5. Save 6 Service Images
-        foreach ($this->service_images as $index => $file) {
-            if ($file) {
-                $path = $file->store('services', 'public');
-                Setting::updateOrCreate(
-                    ['key' => "service_{$index}_img"],
-                    ['value' => $path]
-                );
-                $this->existing["service_{$index}_img"] = $path;
-            }
-        }
-        $this->service_images = [];
 
         // ✅ CRUCIAL FIX: Clear cache so API serves fresh settings immediately
         Cache::forget('api_settings_map');

@@ -111,7 +111,7 @@
                         @elseif ($existingActivityImage)
                             <div class="mb-2">
                                 <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Current Image:</span>
-                                <img src="{{ asset('storage/' . $existingActivityImage) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                                <img src="{{ \App\Support\Media::url($existingActivityImage) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
                             </div>
                         @endif
 
@@ -157,7 +157,7 @@
                         <div class="flex items-center gap-3">
                             <!-- Thumbnail -->
                             @if($act->image)
-                                <img src="{{ asset('storage/' . $act->image) }}" class="w-10 h-10 object-cover rounded-lg border border-slate-200">
+                                <img src="{{ \App\Support\Media::url($act->image) }}" class="w-10 h-10 object-cover rounded-lg border border-slate-200">
                             @else
                                 <span class="w-10 h-10 rounded-lg bg-sky-100 text-sky-800 text-xs font-bold flex items-center justify-center">
                                     {{ $act->order }}

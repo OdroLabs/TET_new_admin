@@ -37,7 +37,7 @@
                     @elseif(!empty($existing['about_hero_image']))
                         <div class="mb-2">
                             <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
-                            <img src="{{ asset('storage/' . $existing['about_hero_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                            <img src="{{ \App\Support\Media::url($existing['about_hero_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
                         </div>
                     @endif
 
@@ -130,7 +130,7 @@
                     @elseif(!empty($existing['about_leader_image']))
                         <div class="mb-2">
                             <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
-                            <img src="{{ asset('storage/' . $existing['about_leader_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                            <img src="{{ \App\Support\Media::url($existing['about_leader_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
                         </div>
                     @endif
 
@@ -167,7 +167,7 @@
                     @elseif(!empty($existing['about_team_group_image']))
                         <div class="mb-2">
                             <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Saved Image:</span>
-                            <img src="{{ asset('storage/' . $existing['about_team_group_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
+                            <img src="{{ \App\Support\Media::url($existing['about_team_group_image']) }}" class="w-24 h-24 object-cover rounded-xl border border-slate-200">
                         </div>
                     @endif
 

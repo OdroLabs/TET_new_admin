@@ -4,6 +4,12 @@
     'defaultMode' => 'desktop', // 'desktop', 'tablet', or 'mobile'
 ])
 
+@php
+    // Admin previews always show the real site, even while Coming Soon mode is on
+    if (!str_contains($url, 'tet_preview=')) {
+        $url .= (str_contains($url, '?') ? '&' : '?') . 'tet_preview=' . \App\Models\Setting::previewKey();
+    }
+@endphp
 <div class="flex-1 bg-slate-100 p-6 lg:p-10 flex flex-col items-center justify-center relative overflow-hidden h-screen">
     
     <!-- 1. GLOBAL PREVIEW TOOLBAR -->

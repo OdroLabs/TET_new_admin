@@ -7,6 +7,7 @@ use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
+use App\Services\NotificationMailer;
 
 class ContactController extends Controller
 {
@@ -31,6 +32,21 @@ class ContactController extends Controller
             'message' => $validated['message'],
             'status' => 'unread',
         ]);
+
+        NotificationMailer::notify(
+            'contact',
+            "New contact message {$contact->reference}: {$contact->subject}",
+            'New Contact Message',
+            [
+                'Reference' => $contact->reference,
+                'Name' => $contact->name,
+                'Email' => $contact->email,
+                'Phone' => $contact->phone,
+                'Subject' => $contact->subject,
+                'Message' => $contact->message,
+            ],
+            $contact->email,
+        );
 
         return response()->json([
             'success' => true,

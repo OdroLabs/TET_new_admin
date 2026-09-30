@@ -88,7 +88,7 @@
                     @elseif ($existingImage)
                         <div class="mb-2">
                             <span class="text-[8px] text-emerald-600 font-bold block mb-1">✓ Current Image:</span>
-                            <img src="{{ asset('storage/' . $existingImage) }}" class="w-16 h-16 object-cover rounded-xl border border-slate-200">
+                            <img src="{{ \App\Support\Media::url($existingImage) }}" class="w-16 h-16 object-cover rounded-xl border border-slate-200">
                         </div>
                     @endif
 
@@ -143,7 +143,7 @@
                     </div>
                     
                     @if($prod->image)
-                        <img src="{{ asset('storage/' . $prod->image) }}" class="w-full h-32 object-cover rounded-2xl mb-3 border border-slate-100">
+                        <img src="{{ \App\Support\Media::url($prod->image) }}" class="w-full h-32 object-cover rounded-2xl mb-3 border border-slate-100">
                     @endif
 
                     <h3 class="font-serif text-lg font-bold text-[#1A365D] mb-1">

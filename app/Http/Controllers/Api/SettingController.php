@@ -12,7 +12,8 @@ class SettingController extends Controller
     public function index(): JsonResponse
     {
         $settings = Cache::remember('api_settings_map', 3600, function () {
-            return Setting::all()->mapWithKeys(function ($item) {
+            // Private values are never published (the Coming Soon preview key)
+            return Setting::whereNotIn('key', Setting::PRIVATE_KEYS)->get()->mapWithKeys(function ($item) {
                 $rawData = $item->getRawOriginal('value');
 
                 // If value is null/empty

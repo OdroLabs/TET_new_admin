@@ -16,6 +16,12 @@ return [
     'default' => env('FILESYSTEM_DISK', 'local'),
 
     /*
+    | Disk used for all admin image uploads (App\Support\Media).
+    | Uses DigitalOcean Spaces when DO_SPACE is set, otherwise the local public disk.
+    */
+    'media' => env('MEDIA_DISK', env('DO_SPACE') ? 'spaces' : 'public'),
+
+    /*
     |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
@@ -44,6 +50,26 @@ return [
             'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
             'visibility' => 'public',
             'throw' => false,
+            'report' => false,
+        ],
+
+        // DigitalOcean Spaces (S3-compatible). Everything is stored under the TET/ folder.
+        'spaces' => [
+            'driver' => 's3',
+            'key' => env('DO_ACCESS_KEY_ID'),
+            'secret' => env('DO_SECRET_ACCESS_KEY'),
+            'region' => env('DO_DEFAULT_REGION', 'sfo3'),
+            'bucket' => env('DO_SPACE'),
+            // DO_ENDPOINT may be the bucket URL (https://<space>.<region>.digitaloceanspaces.com);
+            // the SDK needs the region endpoint (https://<region>.digitaloceanspaces.com).
+            'endpoint' => env('DO_ENDPOINT')
+                ? preg_replace('#^(https?://)' . preg_quote((string) env('DO_SPACE'), '#') . '\.#', '$1', rtrim(env('DO_ENDPOINT'), '/'))
+                : null,
+            'url' => rtrim((string) env('DO_CDN_ENDPOINT', env('DO_ENDPOINT')), '/'),
+            'root' => env('DO_FOLDER', 'TET'),
+            'visibility' => 'public',
+            'use_path_style_endpoint' => false,
+            'throw' => true,
             'report' => false,
         ],
 

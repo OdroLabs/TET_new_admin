@@ -29,20 +29,7 @@ class ManageProjectsPage extends Component
             $this->loadKey($key); 
         }
 
-        // 2. Project card keys (1 to 4)
-        for ($p = 1; $p <= 4; $p++) {
-            $this->loadKey("pj_{$p}_cat");
-            $this->loadKey("pj_{$p}_title1");
-            $this->loadKey("pj_{$p}_title2");
-            $this->loadKey("pj_{$p}_desc");
-            $this->loadKey("pj_{$p}_long_desc"); 
-            $this->loadKey("pj_{$p}_status");
-
-            for ($img = 1; $img <= 3; $img++) {
-                $imgKey = "pj_{$p}_img{$img}";
-                $this->existing[$imgKey] = $this->cleanImagePath(Setting::where('key', $imgKey)->first()?->value);
-            }
-        }
+        // Project cards now live in the `projects` table (Projects Manager).
     }
 
     private function cleanImagePath($val): ?string
@@ -86,10 +73,7 @@ class ManageProjectsPage extends Component
         $targetSection = 'projects-hero';
         $cardIndex = null;
 
-        if (str_contains($propertyName, 'pj_') && preg_match('/pj_(\d+)/', $propertyName, $matches)) {
-            $targetSection = 'projects-grid';
-            $cardIndex = (int) $matches[1];
-        } elseif (str_contains($propertyName, 'cta')) {
+        if (str_contains($propertyName, 'cta')) {
             $targetSection = 'projects-cta';
         }
 
@@ -119,7 +103,7 @@ class ManageProjectsPage extends Component
         // 2. Save images safely (Prevents id wipeout)
         foreach ($this->images as $key => $file) {
             if ($file) {
-                $path = $file->store('projects', 'public');
+                $path = \App\Support\Media::store($file, 'projects');
                 Setting::updateOrCreate(
                     ['key' => $key],
                     ['value' => $path]
@@ -138,7 +122,7 @@ class ManageProjectsPage extends Component
             'targetSection' => 'projects-hero',
         ]);
 
-        session()->flash('message', 'Project portfolio & modal details saved successfully!');
+        session()->flash('message', 'Projects page saved successfully!');
     }
 
     public function render()

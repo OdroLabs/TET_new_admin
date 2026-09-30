@@ -39,7 +39,17 @@ Route::get('/admin/messages', ViewContactMessages::class);
 Route::get('/admin/navigation', ManageNavigation::class);
 Route::get('/admin/footer', ManageFooter::class);
 
+// Projects manager & email settings (login required: SMTP credentials live here)
+Route::middleware('auth')->group(function () {
+    Route::get('/admin/project-list', \App\Livewire\ManageProjects::class);
+    Route::get('/admin/service-list', \App\Livewire\ManageServices::class);
+    Route::get('/admin/email-settings', \App\Livewire\ManageMailSettings::class);
+    Route::get('/admin/site-wording', \App\Livewire\ManageSiteWording::class);
+    Route::get('/admin/site-status', \App\Livewire\ManageSiteStatus::class);
+});
 
+
+// Root: send visitors to the admin (login page if not signed in)
 Route::get('/', function () {
-    return view('livewire.manage-home-page');
+    return redirect(auth()->check() ? '/admin/home' : '/admin/login');
 });

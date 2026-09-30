@@ -136,10 +136,8 @@ class ManageNewsPage extends Component
 
         // Persist new file and delete old file if replaced
         if ($this->activityImage) {
-            if ($act->image && Storage::disk('public')->exists($act->image)) {
-                Storage::disk('public')->delete($act->image);
-            }
-            $act->image = $this->activityImage->store('news', 'public');
+            \App\Support\Media::delete($act->image);
+            $act->image = \App\Support\Media::store($this->activityImage, 'news');
         }
 
         $act->save();
@@ -158,9 +156,7 @@ class ManageNewsPage extends Component
     public function deleteActivity($id)
     {
         $act = Activity::findOrFail($id);
-        if ($act->image && Storage::disk('public')->exists($act->image)) {
-            Storage::disk('public')->delete($act->image);
-        }
+        \App\Support\Media::delete($act->image);
         $act->delete();
 
         // ✅ CRUCIAL FIX 2: Flush cache on delete

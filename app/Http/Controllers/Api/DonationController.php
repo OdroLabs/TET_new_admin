@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Donation;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Str;
+use App\Services\NotificationMailer;
 
 class DonationController extends Controller
 {
@@ -33,17 +35,32 @@ class DonationController extends Controller
             'status' => 'pending',
         ]);
 
+        NotificationMailer::notify(
+            'donations',
+            "New donation pledge {$donation->reference}: {$donation->currency} " . number_format((float) $donation->amount, 2),
+            'New Donation Pledge',
+            [
+                'Reference' => $donation->reference,
+                'Donor' => $donation->donor_name,
+                'Email' => $donation->donor_email,
+                'Amount' => $donation->currency . ' ' . number_format((float) $donation->amount, 2),
+                'Payment method' => $donation->payment_method === 'card' ? 'Card' : 'Bank transfer',
+                'Status' => $donation->status,
+            ],
+        );
+
         return response()->json([
             'success' => true,
             'reference' => $donation->reference,
             'amount' => $donation->amount,
             'payment_method' => $donation->payment_method,
+            // Managed in Admin → Site Wording → Donate
             'bank_details' => [
-                'bank_name' => 'Commercial Bank of Ceylon',
-                'account_name' => 'Trans Equality Trust',
-                'account_number' => '8009123456',
-                'branch' => 'Colombo Main Branch',
-                'swift_code' => 'CCEYLKX',
+                'bank_name' => Setting::text('dn_bank_name'),
+                'account_name' => Setting::text('dn_bank_account_name'),
+                'account_number' => Setting::text('dn_bank_account_number'),
+                'branch' => Setting::text('dn_bank_branch'),
+                'swift_code' => Setting::text('dn_bank_swift'),
             ]
         ], 201);
     }

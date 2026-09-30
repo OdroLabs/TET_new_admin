@@ -37,14 +37,11 @@ class ManageBookingPage extends Component
             $this->loadKey($key);
         }
 
-        $urlDefaults = [
-            'se_hall_btn_url' => '/contact?subject=HallBooking',
-            'se_prod_btn_url' => '/contact?subject=BulkCondomOrders',
-        ];
+
 
         foreach ($this->urlKeys as $key) {
             $setting = Setting::where('key', $key)->first();
-            $this->urls[$key] = $setting ? $this->cleanValue($setting) : ($urlDefaults[$key] ?? '');
+            $this->urls[$key] = $setting ? $this->cleanValue($setting) : '';
         }
 
         $this->existing['se_hall_img'] = $this->cleanValue(Setting::where('key', 'se_hall_img')->first());
@@ -119,7 +116,7 @@ class ManageBookingPage extends Component
 
         // 3. Save Hall Photo
         if ($this->hall_image) {
-            $path = $this->hall_image->store('booking', 'public');
+            $path = \App\Support\Media::store($this->hall_image, 'booking');
             Setting::updateOrCreate(
                 ['key' => 'se_hall_img'],
                 ['value' => $path]

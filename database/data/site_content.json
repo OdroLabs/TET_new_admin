@@ -1,0 +1,3339 @@
+[
+ {
+  "key": "hero_top_label",
+  "group": "home",
+  "kind": "text",
+  "en": "TRANS EQUALITY TRUST • SRI LANKA"
+ },
+ {
+  "key": "hero_title_1",
+  "group": "home",
+  "kind": "text",
+  "en": "Protecting"
+ },
+ {
+  "key": "hero_title_2",
+  "group": "home",
+  "kind": "text",
+  "en": "Rights & Hope."
+ },
+ {
+  "key": "hero_description",
+  "group": "home",
+  "kind": "text",
+  "en": "Dedicated to protecting the safety and well-being of over 5,000 transgender individuals through systemic advocacy."
+ },
+ {
+  "key": "btn_support_url",
+  "group": "home",
+  "kind": "plain",
+  "en": "/donate"
+ },
+ {
+  "key": "btn_support",
+  "group": "home",
+  "kind": "text",
+  "en": "Support Us"
+ },
+ {
+  "key": "btn_mission_url",
+  "group": "home",
+  "kind": "plain",
+  "en": "/about"
+ },
+ {
+  "key": "btn_mission",
+  "group": "home",
+  "kind": "text",
+  "en": "Our Mission"
+ },
+ {
+  "key": "hero_image_main",
+  "group": "home",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "ui_home_advocacy_header",
+  "group": "home",
+  "kind": "text",
+  "en": "Advocacy Header"
+ },
+ {
+  "key": "hero_image_sub",
+  "group": "home",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "ui_home_community_support",
+  "group": "home",
+  "kind": "text",
+  "en": "Community Support"
+ },
+ {
+  "key": "impact_title",
+  "group": "home",
+  "kind": "text",
+  "en": "Real-World Impact"
+ },
+ {
+  "key": "impact_label",
+  "group": "home",
+  "kind": "text",
+  "en": "Documenting Change • 08 Core Pillars"
+ },
+ {
+  "key": "story_image",
+  "group": "home",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "ui_home_breaking_systemic_barriers",
+  "group": "home",
+  "kind": "text",
+  "en": "Breaking Systemic Barriers"
+ },
+ {
+  "key": "story_video_url",
+  "group": "home",
+  "kind": "plain",
+  "en": "https://youtube.com"
+ },
+ {
+  "key": "story_label",
+  "group": "home",
+  "kind": "text",
+  "en": "Our Advocacy"
+ },
+ {
+  "key": "story_title",
+  "group": "home",
+  "kind": "text",
+  "en": "Breaking Systemic Barriers."
+ },
+ {
+  "key": "story_description",
+  "group": "home",
+  "kind": "text",
+  "en": "Isolation traps many in addiction. TET acts as the family support system these individuals lack—stopping illegal detentions and providing safe recovery paths."
+ },
+ {
+  "key": "story_stat_val",
+  "group": "home",
+  "kind": "text",
+  "en": "25-30%"
+ },
+ {
+  "key": "story_stat_label",
+  "group": "home",
+  "kind": "text",
+  "en": "Addiction Rate"
+ },
+ {
+  "key": "explore_services_url",
+  "group": "home",
+  "kind": "plain",
+  "en": "/services"
+ },
+ {
+  "key": "explore_services",
+  "group": "home",
+  "kind": "text",
+  "en": "Explore Services"
+ },
+ {
+  "key": "about_hero_label",
+  "group": "about",
+  "kind": "text",
+  "en": "OUR HISTORY • OUR MISSION"
+ },
+ {
+  "key": "about_hero_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Advocating for Dignity."
+ },
+ {
+  "key": "about_hero_description",
+  "group": "about",
+  "kind": "text",
+  "en": "TET is a pioneering social enterprise and advocacy organization in Sri Lanka dedicated to the empowerment of the transgender community. We work towards a society where every person can live with dignity, safety, equality, and freedom."
+ },
+ {
+  "key": "about_hero_image",
+  "group": "about",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1573164713988-8665fc963095"
+ },
+ {
+  "key": "ui_about_advocacy_header",
+  "group": "about",
+  "kind": "text",
+  "en": "Advocacy Header"
+ },
+ {
+  "key": "about_vision_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Our Vision"
+ },
+ {
+  "key": "about_vision_text",
+  "group": "about",
+  "kind": "text",
+  "en": "We envision a future where gender identity is no longer a barrier to human rights, healthcare, or employment. Our goal is to foster a Sri Lankan society that celebrates diversity and ensures total legal and social inclusion for all."
+ },
+ {
+  "key": "about_mission_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Our Mission"
+ },
+ {
+  "key": "about_mission_text",
+  "group": "about",
+  "kind": "text",
+  "en": "To empower the transgender community through economic opportunities, legislative advocacy, and social support. We provide a platform for voices that have been silenced, creating sustainable change through education and social enterprise."
+ },
+ {
+  "key": "ui_about_guiding_principles",
+  "group": "about",
+  "kind": "text",
+  "en": "Guiding Principles"
+ },
+ {
+  "key": "about_values_main_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Our Core Values"
+ },
+ {
+  "key": "about_leader_image",
+  "group": "about",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2"
+ },
+ {
+  "key": "ui_about_leader",
+  "group": "about",
+  "kind": "text",
+  "en": "Leader"
+ },
+ {
+  "key": "about_leader_label",
+  "group": "about",
+  "kind": "text",
+  "en": "Leadership Spotlight"
+ },
+ {
+  "key": "about_leader_name",
+  "group": "about",
+  "kind": "text",
+  "en": "Kasuni Mayadunna"
+ },
+ {
+  "key": "about_leader_role",
+  "group": "about",
+  "kind": "text",
+  "en": "Executive Director"
+ },
+ {
+  "key": "about_leader_bio",
+  "group": "about",
+  "kind": "text",
+  "en": "Kasuni Mayadunna is a visionary advocate for transgender rights in Sri Lanka. Under her leadership, TET has evolved from a small collective into a robust social enterprise. She is dedicated to creating institutional change that addresses the economic disparities and social stigma faced by the trans community."
+ },
+ {
+  "key": "about_leader_stat1_val",
+  "group": "about",
+  "kind": "text",
+  "en": "5,000+"
+ },
+ {
+  "key": "about_leader_stat1_label",
+  "group": "about",
+  "kind": "text",
+  "en": "Lives Impacted"
+ },
+ {
+  "key": "about_leader_stat2_val",
+  "group": "about",
+  "kind": "text",
+  "en": "24/7"
+ },
+ {
+  "key": "about_leader_stat2_label",
+  "group": "about",
+  "kind": "text",
+  "en": "Crisis Support"
+ },
+ {
+  "key": "about_team_label",
+  "group": "about",
+  "kind": "text",
+  "en": "COMMUNITY LEADERSHIP • OUR ADVOCATES"
+ },
+ {
+  "key": "about_team_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Our Team Members"
+ },
+ {
+  "key": "about_team_desc",
+  "group": "about",
+  "kind": "text",
+  "en": "A dedicated collective of advocates, case workers, and community leaders working together to ensure safe and stigma-free spaces for transgender individuals across Sri Lanka."
+ },
+ {
+  "key": "about_team_group_image",
+  "group": "about",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1522071820081-009f0129c71c"
+ },
+ {
+  "key": "ui_about_our_team_members",
+  "group": "about",
+  "kind": "text",
+  "en": "Our Team Members"
+ },
+ {
+  "key": "ui_about_trans_equality_trust",
+  "group": "about",
+  "kind": "text",
+  "en": "Trans Equality Trust"
+ },
+ {
+  "key": "ui_about_team_and_grassroots_community_organizers",
+  "group": "about",
+  "kind": "text",
+  "en": "Team & Grassroots Community Organizers"
+ },
+ {
+  "key": "service_hero_bg",
+  "group": "services",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1511632765486-a01980e01a18"
+ },
+ {
+  "key": "ui_services_hero_background",
+  "group": "services",
+  "kind": "text",
+  "en": "Hero Background"
+ },
+ {
+  "key": "s_hero_label",
+  "group": "services",
+  "kind": "text",
+  "en": "Our Essential Services"
+ },
+ {
+  "key": "s_hero_title",
+  "group": "services",
+  "kind": "text",
+  "en": "Comprehensive Support for the Transgender Community."
+ },
+ {
+  "key": "s_hero_desc",
+  "group": "services",
+  "kind": "text",
+  "en": "TET provides a critical support infrastructure in Sri Lanka. From legal defense to clinical rehabilitation, we exist to dismantle systemic barriers and protect human dignity."
+ },
+ {
+  "key": "s_process_label",
+  "group": "services",
+  "kind": "text",
+  "en": "Intake & Recovery Framework"
+ },
+ {
+  "key": "s_process_title",
+  "group": "services",
+  "kind": "text",
+  "en": "How We Deliver Care"
+ },
+ {
+  "key": "s_process_desc",
+  "group": "services",
+  "kind": "text",
+  "en": "A transparent, survivor-centered intake pipeline ensuring confidentiality, medical safety, and long-term legal security."
+ },
+ {
+  "key": "s_emergency_badge",
+  "group": "services",
+  "kind": "text",
+  "en": "24/7 Rapid Response"
+ },
+ {
+  "key": "s_emergency_title",
+  "group": "services",
+  "kind": "text",
+  "en": "In Immediate Danger or Facing Unlawful Detention?"
+ },
+ {
+  "key": "s_emergency_desc",
+  "group": "services",
+  "kind": "text",
+  "en": "Our rapid response defense team operates around the clock to provide emergency bail interventions and safe-house transit."
+ },
+ {
+  "key": "s_emergency_phone",
+  "group": "services",
+  "kind": "text",
+  "en": "+94 11 234 5678"
+ },
+ {
+  "key": "ui_services_confidential_emergency_line",
+  "group": "services",
+  "kind": "text",
+  "en": "Confidential Emergency Line"
+ },
+ {
+  "key": "ui_projects_gallery",
+  "group": "projects",
+  "kind": "text",
+  "en": "Gallery:"
+ },
+ {
+  "key": "ui_projects_tet_community_initiative",
+  "group": "projects",
+  "kind": "text",
+  "en": "TET Community Initiative"
+ },
+ {
+  "key": "ui_projects_view_case_study_and_details",
+  "group": "projects",
+  "kind": "text",
+  "en": "View Case Study & Details"
+ },
+ {
+  "key": "ui_projects_close_modal",
+  "group": "projects",
+  "kind": "text",
+  "en": "Close Modal"
+ },
+ {
+  "key": "ui_projects_thumbnail",
+  "group": "projects",
+  "kind": "text",
+  "en": "Thumbnail"
+ },
+ {
+  "key": "ui_projects_project_case_study_and_impact",
+  "group": "projects",
+  "kind": "text",
+  "en": "Project Case Study & Impact"
+ },
+ {
+  "key": "ui_projects_trans_equality_trust_program",
+  "group": "projects",
+  "kind": "text",
+  "en": "Trans Equality Trust Program"
+ },
+ {
+  "key": "ui_projects_documented_advocacy_initiative_sri_lanka",
+  "group": "projects",
+  "kind": "text",
+  "en": "Documented Advocacy Initiative • Sri Lanka"
+ },
+ {
+  "key": "ui_projects_close_case_study",
+  "group": "projects",
+  "kind": "text",
+  "en": "Close Case Study"
+ },
+ {
+  "key": "pj_hero_label",
+  "group": "projects",
+  "kind": "text",
+  "en": "STRATEGIC ADVOCACY • OUR PROJECTS"
+ },
+ {
+  "key": "pj_hero_title1",
+  "group": "projects",
+  "kind": "text",
+  "en": "Advocacy in"
+ },
+ {
+  "key": "pj_hero_title2",
+  "group": "projects",
+  "kind": "text",
+  "en": "Action & Motion."
+ },
+ {
+  "key": "pj_hero_desc",
+  "group": "projects",
+  "kind": "text",
+  "en": "Driving long-term systemic change, policy evolution, and economic independence for the transgender community across Sri Lanka."
+ },
+ {
+  "key": "pj_cta_title",
+  "group": "projects",
+  "kind": "text",
+  "en": "Partner with our ongoing initiatives."
+ },
+ {
+  "key": "pj_cta_desc",
+  "group": "projects",
+  "kind": "text",
+  "en": "We collaborate with legal practitioners, community organizations, and international donors to expand these projects."
+ },
+ {
+  "key": "ui_projects_volunteer_with_a_project",
+  "group": "projects",
+  "kind": "text",
+  "en": "Volunteer with a Project"
+ },
+ {
+  "key": "ui_projects_contact_project_leads",
+  "group": "projects",
+  "kind": "text",
+  "en": "Contact Project Leads"
+ },
+ {
+  "key": "ui_news_close_modal",
+  "group": "news",
+  "kind": "text",
+  "en": "Close Modal"
+ },
+ {
+  "key": "ui_news_field_update",
+  "group": "news",
+  "kind": "text",
+  "en": "Field Update"
+ },
+ {
+  "key": "ui_news_tet_field_report",
+  "group": "news",
+  "kind": "text",
+  "en": "TET Field Report"
+ },
+ {
+  "key": "ui_news_publish_share_update",
+  "group": "news",
+  "kind": "text",
+  "en": "Publish / Share Update:"
+ },
+ {
+  "key": "ui_news_visit_official_facebook_page",
+  "group": "news",
+  "kind": "text",
+  "en": "Visit Official Facebook Page"
+ },
+ {
+  "key": "ui_news_whatsapp",
+  "group": "news",
+  "kind": "text",
+  "en": "WhatsApp"
+ },
+ {
+  "key": "act_hero_label",
+  "group": "news",
+  "kind": "text",
+  "en": "GRASSROOTS IN ACTION • DAILY FIELD UPDATES"
+ },
+ {
+  "key": "act_hero_title1",
+  "group": "news",
+  "kind": "text",
+  "en": "Daily"
+ },
+ {
+  "key": "act_hero_title2",
+  "group": "news",
+  "kind": "text",
+  "en": "Activities."
+ },
+ {
+  "key": "act_hero_desc",
+  "group": "news",
+  "kind": "text",
+  "en": "Real-time updates, field visits, community support sessions, and grassroots interventions happening across Sri Lanka."
+ },
+ {
+  "key": "ui_news_view_full_details",
+  "group": "news",
+  "kind": "text",
+  "en": "View Full Details →"
+ },
+ {
+  "key": "ui_news_tet_archive",
+  "group": "news",
+  "kind": "text",
+  "en": "TET Archive"
+ },
+ {
+  "key": "ui_gallery_close_event_modal",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Close Event Modal"
+ },
+ {
+  "key": "ui_gallery_official_tet_archive",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Official TET Archive"
+ },
+ {
+  "key": "ui_gallery_event_photo_gallery",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Event Photo Gallery"
+ },
+ {
+  "key": "ui_gallery_event_gallery",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Event Gallery"
+ },
+ {
+  "key": "ui_gallery_share_event",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Share Event:"
+ },
+ {
+  "key": "ui_gallery_facebook",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Facebook"
+ },
+ {
+  "key": "ui_gallery_whatsapp",
+  "group": "gallery",
+  "kind": "text",
+  "en": "WhatsApp"
+ },
+ {
+  "key": "ui_gallery_link_copied",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Link Copied! ✓"
+ },
+ {
+  "key": "ui_gallery_copy_link",
+  "group": "gallery",
+  "kind": "text",
+  "en": "🔗 Copy Link"
+ },
+ {
+  "key": "gl_events_tag",
+  "group": "gallery",
+  "kind": "text",
+  "en": "COMMUNITY HAPPENINGS • EVENTS & ARCHIVES"
+ },
+ {
+  "key": "gl_gallery_title",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Visual Storytelling"
+ },
+ {
+  "key": "ui_gallery_and_community_events",
+  "group": "gallery",
+  "kind": "text",
+  "en": "& Community Events"
+ },
+ {
+  "key": "gl_gallery_desc",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Explore our ongoing gatherings, workshops, and milestones. Click on any event card to read full details and share it to your social media."
+ },
+ {
+  "key": "ui_gallery_read_details_and_share",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Read Details & Share →"
+ },
+ {
+  "key": "ui_gallery_tet_archive",
+  "group": "gallery",
+  "kind": "text",
+  "en": "TET Archive"
+ },
+ {
+  "key": "se_hero_badge",
+  "group": "booking",
+  "kind": "text",
+  "en": "TET SOCIAL ENTERPRISES • SELF-SUSTAINING BUSINESSES"
+ },
+ {
+  "key": "se_hero_title1",
+  "group": "booking",
+  "kind": "text",
+  "en": "Purpose-Driven"
+ },
+ {
+  "key": "se_hero_title2",
+  "group": "booking",
+  "kind": "text",
+  "en": "Enterprises."
+ },
+ {
+  "key": "se_hero_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "Our businesses fund our community mission. 100% of the proceeds generated from hall bookings, daily care center services, and condom sales directly fund legal defense, shelter, and medical support for transgender individuals."
+ },
+ {
+  "key": "ui_booking_hall_booking",
+  "group": "booking",
+  "kind": "text",
+  "en": "🏛️ Hall Booking"
+ },
+ {
+  "key": "ui_booking_daily_care_center",
+  "group": "booking",
+  "kind": "text",
+  "en": "☀️ Daily Care Center"
+ },
+ {
+  "key": "ui_booking_safe_products_condoms",
+  "group": "booking",
+  "kind": "text",
+  "en": "🛡️ Safe Products (Condoms)"
+ },
+ {
+  "key": "se_hall_img",
+  "group": "booking",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205"
+ },
+ {
+  "key": "ui_booking_tet_hall_booking",
+  "group": "booking",
+  "kind": "text",
+  "en": "TET Hall Booking"
+ },
+ {
+  "key": "se_hall_capacity",
+  "group": "booking",
+  "kind": "text",
+  "en": "📍 Capacity: 50 – 200 Guests"
+ },
+ {
+  "key": "se_hall_tag",
+  "group": "booking",
+  "kind": "text",
+  "en": "VENUE HIRE • SOCIAL ENTERPRISE"
+ },
+ {
+  "key": "se_hall_title1",
+  "group": "booking",
+  "kind": "text",
+  "en": "TET Event Halls &"
+ },
+ {
+  "key": "se_hall_title2",
+  "group": "booking",
+  "kind": "text",
+  "en": "Space Booking."
+ },
+ {
+  "key": "se_hall_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "Looking for a professional, inclusive venue for corporate meetings, workshops, art exhibitions, or civil celebrations? Our spaces offer full audiovisual setups, high-speed Wi-Fi, air conditioning, and flexible seating layouts."
+ },
+ {
+  "key": "ui_booking_audio_visual_equipment",
+  "group": "booking",
+  "kind": "text",
+  "en": "🔊 Audio / Visual Equipment"
+ },
+ {
+  "key": "ui_booking_hd_projectors_and_pa_sound",
+  "group": "booking",
+  "kind": "text",
+  "en": "HD Projectors & PA Sound Setup"
+ },
+ {
+  "key": "ui_booking_kitchen_and_catering_access",
+  "group": "booking",
+  "kind": "text",
+  "en": "☕ Kitchen & Catering Access"
+ },
+ {
+  "key": "ui_booking_tea_coffee_and_dining_service",
+  "group": "booking",
+  "kind": "text",
+  "en": "Tea, coffee & dining service prep"
+ },
+ {
+  "key": "ui_booking_accessible_and_safe_space",
+  "group": "booking",
+  "kind": "text",
+  "en": "♿ Accessible & Safe Space"
+ },
+ {
+  "key": "ui_booking_zero_discrimination_guarantee",
+  "group": "booking",
+  "kind": "text",
+  "en": "Zero-discrimination guarantee"
+ },
+ {
+  "key": "ui_booking_competitive_rates",
+  "group": "booking",
+  "kind": "text",
+  "en": "🏷️ Competitive Rates"
+ },
+ {
+  "key": "ui_booking_hourly_half_day_and_full",
+  "group": "booking",
+  "kind": "text",
+  "en": "Hourly, half-day & full-day packages"
+ },
+ {
+  "key": "se_hall_btn",
+  "group": "booking",
+  "kind": "text",
+  "en": "Check Hall Availability & Pricing"
+ },
+ {
+  "key": "se_care_tag",
+  "group": "booking",
+  "kind": "text",
+  "en": "COMPASSIONATE COMMUNITY SERVICES"
+ },
+ {
+  "key": "se_care_title1",
+  "group": "booking",
+  "kind": "text",
+  "en": "TET Daily"
+ },
+ {
+  "key": "se_care_title2",
+  "group": "booking",
+  "kind": "text",
+  "en": "Care Center."
+ },
+ {
+  "key": "se_care_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "Our daily care center provides daytime care, elderly respite, and inclusive child supervision. Staffed by trained and certified community caregivers in a warm, dignified, and loving environment."
+ },
+ {
+  "key": "ui_booking_daily_and_monthly_packages_available",
+  "group": "booking",
+  "kind": "text",
+  "en": "Daily & Monthly Packages Available"
+ },
+ {
+  "key": "se_prod_tag",
+  "group": "booking",
+  "kind": "text",
+  "en": "SEXUAL HEALTH & WELLNESS ENTERPRISE"
+ },
+ {
+  "key": "se_prod_title1",
+  "group": "booking",
+  "kind": "text",
+  "en": "Affordable Protection."
+ },
+ {
+  "key": "se_prod_title2",
+  "group": "booking",
+  "kind": "text",
+  "en": "Condom & Wellness Products."
+ },
+ {
+  "key": "se_prod_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "TET operates a social marketing business supplying certified, premium-grade condoms and barrier protection products. We provide high-quality, discreetly packaged safe sex essentials at accessible prices while funding free community HIV/STI screening."
+ },
+ {
+  "key": "ui_booking_order_now",
+  "group": "booking",
+  "kind": "text",
+  "en": "Order Now →"
+ },
+ {
+  "key": "ui_booking_100_discreet_islandwide_delivery",
+  "group": "booking",
+  "kind": "text",
+  "en": "100% Discreet Islandwide Delivery"
+ },
+ {
+  "key": "ui_booking_bulk_supplies_for_ngos_clinics",
+  "group": "booking",
+  "kind": "text",
+  "en": "Bulk Supplies for NGOs, Clinics & Hospitality"
+ },
+ {
+  "key": "ui_booking_international_quality_iso_tested",
+  "group": "booking",
+  "kind": "text",
+  "en": "International Quality ISO Tested"
+ },
+ {
+  "key": "ui_booking_inquiry_received",
+  "group": "booking",
+  "kind": "text",
+  "en": "Inquiry Received"
+ },
+ {
+  "key": "ui_booking_your_request_reference_is",
+  "group": "booking",
+  "kind": "text",
+  "en": "Your request reference is"
+ },
+ {
+  "key": "ui_booking_our_commercial_team_will_call",
+  "group": "booking",
+  "kind": "text",
+  "en": ". Our commercial team will call you shortly to confirm arrangements."
+ },
+ {
+  "key": "ui_booking_close",
+  "group": "booking",
+  "kind": "text",
+  "en": "Close"
+ },
+ {
+  "key": "ui_booking_unit_price",
+  "group": "booking",
+  "kind": "text",
+  "en": "Unit Price:"
+ },
+ {
+  "key": "ui_booking_lkr",
+  "group": "booking",
+  "kind": "text",
+  "en": "LKR"
+ },
+ {
+  "key": "ui_booking_your_full_name",
+  "group": "booking",
+  "kind": "text",
+  "en": "Your Full Name *"
+ },
+ {
+  "key": "ui_booking_e_g_priyantha_silva",
+  "group": "booking",
+  "kind": "text",
+  "en": "e.g. Priyantha Silva"
+ },
+ {
+  "key": "ui_booking_contact_phone_whatsapp",
+  "group": "booking",
+  "kind": "text",
+  "en": "Contact Phone (WhatsApp) *"
+ },
+ {
+  "key": "ui_booking_07x_xxx_xxxx",
+  "group": "booking",
+  "kind": "text",
+  "en": "07X XXX XXXX"
+ },
+ {
+  "key": "ui_booking_email_optional",
+  "group": "booking",
+  "kind": "text",
+  "en": "Email (Optional)"
+ },
+ {
+  "key": "ui_booking_name_mail_com",
+  "group": "booking",
+  "kind": "text",
+  "en": "name@mail.com"
+ },
+ {
+  "key": "ui_booking_quantity_packs",
+  "group": "booking",
+  "kind": "text",
+  "en": "Quantity (Packs)"
+ },
+ {
+  "key": "ct_hero_label",
+  "group": "contact",
+  "kind": "text",
+  "en": "TRANS EQUALITY TRUST • CONNECT"
+ },
+ {
+  "key": "ct_hero_title",
+  "group": "contact",
+  "kind": "text",
+  "en": "Connect with Us."
+ },
+ {
+  "key": "ct_hero_desc",
+  "group": "contact",
+  "kind": "text",
+  "en": "Whether you are seeking partnership, legal aid, or looking to support our mission, our institutional desk is ready to facilitate your inquiry."
+ },
+ {
+  "key": "ct_crisis_badge",
+  "group": "contact",
+  "kind": "text",
+  "en": "Crisis Protocol Active"
+ },
+ {
+  "key": "ct_crisis_title",
+  "group": "contact",
+  "kind": "text",
+  "en": "Urgent Safety Assistance"
+ },
+ {
+  "key": "ct_crisis_desc",
+  "group": "contact",
+  "kind": "text",
+  "en": "If you are facing illegal detention, harassment, or medical mistreatment, our emergency response team is available 24/7 for direct legal aid and safe-access intervention."
+ },
+ {
+  "key": "ct_crisis_phone",
+  "group": "contact",
+  "kind": "text",
+  "en": "+94 11 234 5678"
+ },
+ {
+  "key": "ui_contact_confidential_24_7_secure",
+  "group": "contact",
+  "kind": "text",
+  "en": "Confidential • 24/7 • Secure"
+ },
+ {
+  "key": "ct_form_title",
+  "group": "contact",
+  "kind": "text",
+  "en": "Send a Message."
+ },
+ {
+  "key": "ui_contact_inquiry_dispatched",
+  "group": "contact",
+  "kind": "text",
+  "en": "Inquiry Dispatched"
+ },
+ {
+  "key": "ui_contact_thank_you_your_message_reference",
+  "group": "contact",
+  "kind": "text",
+  "en": "Thank you. Your message reference is"
+ },
+ {
+  "key": "ui_contact_our_desk_officers_will_respond",
+  "group": "contact",
+  "kind": "text",
+  "en": ". Our desk officers will respond as soon as possible."
+ },
+ {
+  "key": "ui_contact_send_another_inquiry",
+  "group": "contact",
+  "kind": "text",
+  "en": "Send Another Inquiry"
+ },
+ {
+  "key": "ui_contact_your_name",
+  "group": "contact",
+  "kind": "text",
+  "en": "Your Name *"
+ },
+ {
+  "key": "ui_contact_full_name",
+  "group": "contact",
+  "kind": "text",
+  "en": "Full Name"
+ },
+ {
+  "key": "ui_contact_email_address",
+  "group": "contact",
+  "kind": "text",
+  "en": "Email Address *"
+ },
+ {
+  "key": "ui_contact_hello_domain_com",
+  "group": "contact",
+  "kind": "text",
+  "en": "hello@domain.com"
+ },
+ {
+  "key": "ui_contact_phone_whatsapp_number_optional",
+  "group": "contact",
+  "kind": "text",
+  "en": "Phone / WhatsApp Number (Optional)"
+ },
+ {
+  "key": "ui_contact_07x_xxx_xxxx",
+  "group": "contact",
+  "kind": "text",
+  "en": "07X XXX XXXX"
+ },
+ {
+  "key": "ui_contact_message",
+  "group": "contact",
+  "kind": "text",
+  "en": "Message *"
+ },
+ {
+  "key": "ui_contact_how_can_our_desk_assist",
+  "group": "contact",
+  "kind": "text",
+  "en": "How can our desk assist you?"
+ },
+ {
+  "key": "ct_form_btn",
+  "group": "contact",
+  "kind": "text",
+  "en": "Submit Inquiry"
+ },
+ {
+  "key": "ct_form_img",
+  "group": "contact",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d"
+ },
+ {
+  "key": "ui_contact_community_desk",
+  "group": "contact",
+  "kind": "text",
+  "en": "Community Desk"
+ },
+ {
+  "key": "dn_hero_label",
+  "group": "donate",
+  "kind": "text",
+  "en": "TRANS EQUALITY TRUST • INVEST IN CHANGE"
+ },
+ {
+  "key": "dn_hero_title1",
+  "group": "donate",
+  "kind": "text",
+  "en": "Invest in"
+ },
+ {
+  "key": "dn_hero_title2",
+  "group": "donate",
+  "kind": "text",
+  "en": "Equality & Dignity."
+ },
+ {
+  "key": "dn_hero_desc",
+  "group": "donate",
+  "kind": "text",
+  "en": "Your financial support directly enables 24/7 legal aid, safe healthcare access, emergency shelter, and dignity for transgender individuals across Sri Lanka."
+ },
+ {
+  "key": "dn_desk_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Contribution Desk"
+ },
+ {
+  "key": "dn_desk_desc",
+  "group": "donate",
+  "kind": "text",
+  "en": "Select an amount to fund specific advocacy programs and emergency community services."
+ },
+ {
+  "key": "ui_donate_thank_you_for_your_support",
+  "group": "donate",
+  "kind": "text",
+  "en": "Thank You for Your Support!"
+ },
+ {
+  "key": "ui_donate_your_commitment_has_been_recorded",
+  "group": "donate",
+  "kind": "text",
+  "en": "Your commitment has been recorded with reference"
+ },
+ {
+  "key": "ui_donate_for",
+  "group": "donate",
+  "kind": "text",
+  "en": "for"
+ },
+ {
+  "key": "ui_donate_lkr",
+  "group": "donate",
+  "kind": "text",
+  "en": "LKR"
+ },
+ {
+  "key": "ui_donate_direct_bank_deposit_instructions",
+  "group": "donate",
+  "kind": "text",
+  "en": "🏦 Direct Bank Deposit Instructions:"
+ },
+ {
+  "key": "ui_donate_bank",
+  "group": "donate",
+  "kind": "text",
+  "en": "Bank:"
+ },
+ {
+  "key": "ui_donate_account_name",
+  "group": "donate",
+  "kind": "text",
+  "en": "Account Name:"
+ },
+ {
+  "key": "ui_donate_account_number",
+  "group": "donate",
+  "kind": "text",
+  "en": "Account Number:"
+ },
+ {
+  "key": "ui_donate_branch",
+  "group": "donate",
+  "kind": "text",
+  "en": "Branch:"
+ },
+ {
+  "key": "ui_donate_swift_code",
+  "group": "donate",
+  "kind": "text",
+  "en": "Swift Code:"
+ },
+ {
+  "key": "ui_donate_please_use_reference",
+  "group": "donate",
+  "kind": "text",
+  "en": "Please use reference"
+ },
+ {
+  "key": "ui_donate_in_your_deposit_description_and",
+  "group": "donate",
+  "kind": "text",
+  "en": "in your deposit description and email deposit slips to finance@transequalitytrust.lk."
+ },
+ {
+  "key": "ui_donate_make_another_contribution",
+  "group": "donate",
+  "kind": "text",
+  "en": "Make Another Contribution"
+ },
+ {
+  "key": "dn_desk_amt_label",
+  "group": "donate",
+  "kind": "text",
+  "en": "Select Amount (LKR)"
+ },
+ {
+  "key": "ui_donate_or_enter_custom_amount_lkr",
+  "group": "donate",
+  "kind": "text",
+  "en": "Or enter custom amount (LKR)"
+ },
+ {
+  "key": "dn_id_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Donor Identity"
+ },
+ {
+  "key": "ui_donate_full_name",
+  "group": "donate",
+  "kind": "text",
+  "en": "Full Name"
+ },
+ {
+  "key": "ui_donate_email_address",
+  "group": "donate",
+  "kind": "text",
+  "en": "Email Address"
+ },
+ {
+  "key": "dn_id_anon",
+  "group": "donate",
+  "kind": "text",
+  "en": "I prefer to remain an anonymous donor"
+ },
+ {
+  "key": "dn_pay_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Payment Preference"
+ },
+ {
+  "key": "dn_pay_opt1",
+  "group": "donate",
+  "kind": "text",
+  "en": "Credit / Debit Card"
+ },
+ {
+  "key": "dn_pay_opt2",
+  "group": "donate",
+  "kind": "text",
+  "en": "Direct Bank Transfer"
+ },
+ {
+  "key": "dn_desk_btn",
+  "group": "donate",
+  "kind": "text",
+  "en": "Donate LKR"
+ },
+ {
+  "key": "dn_badge1",
+  "group": "donate",
+  "kind": "text",
+  "en": "SSL Encrypted"
+ },
+ {
+  "key": "dn_badge2",
+  "group": "donate",
+  "kind": "text",
+  "en": "Verified NGO"
+ },
+ {
+  "key": "dn_badge3",
+  "group": "donate",
+  "kind": "text",
+  "en": "100% Confidential"
+ },
+ {
+  "key": "dn_imp_label",
+  "group": "donate",
+  "kind": "text",
+  "en": "Institutional Accountability"
+ },
+ {
+  "key": "dn_imp_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Where your investment goes."
+ },
+ {
+  "key": "ui_donate_every_rupee_donated_is_audited",
+  "group": "donate",
+  "kind": "text",
+  "en": "Every rupee donated is audited and allocated directly to core human rights defenses and community protection networks."
+ },
+ {
+  "key": "v_hero_label",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "COMMUNITY & YOUTH EMPOWERMENT"
+ },
+ {
+  "key": "v_hero_title1",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Shape the"
+ },
+ {
+  "key": "v_hero_title2",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Future Together."
+ },
+ {
+  "key": "v_hero_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Lend your voice, skills, and empathy. Whether you are joining as a general supporter or a youth peer volunteer, you help build a stigma-free Sri Lanka for the transgender community."
+ },
+ {
+  "key": "v_hero_btn1",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Volunteer Registry"
+ },
+ {
+  "key": "v_hero_btn2",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Explore Youth Services"
+ },
+ {
+  "key": "v_hero_img",
+  "group": "volunteer",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1531482615713-2afd69097998"
+ },
+ {
+  "key": "ui_volunteer_community_volunteers",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Community Volunteers"
+ },
+ {
+  "key": "v_youth_label",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Empowering the Next Generation"
+ },
+ {
+  "key": "v_youth_title",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Our Youth Services"
+ },
+ {
+  "key": "v_youth_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "TET provides tailored programs dedicated to young transgender and gender-diverse youth across Sri Lanka to ensure safety, mental well-being, and growth."
+ },
+ {
+  "key": "ui_volunteer_youth_driven_stigma_free",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Youth Driven • Stigma Free"
+ },
+ {
+  "key": "v_form_tag",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Make a Lasting Impact"
+ },
+ {
+  "key": "v_form_title",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Volunteer Application Form"
+ },
+ {
+  "key": "v_form_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "All information submitted is securely routed directly to our admin team. Please ensure details match your official documents."
+ },
+ {
+  "key": "ui_volunteer_application_received",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Application Received!"
+ },
+ {
+  "key": "ui_volunteer_thank_you_for_volunteering_with",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Thank you for volunteering with Trans Equality Trust. Our administrative coordinator will review your profile and contact you soon."
+ },
+ {
+  "key": "ui_volunteer_submit_another_response",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Submit Another Response"
+ },
+ {
+  "key": "ui_volunteer_select_volunteer_role",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Select Volunteer Role"
+ },
+ {
+  "key": "ui_volunteer_general_volunteer",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "General Volunteer"
+ },
+ {
+  "key": "ui_volunteer_legal_healthcare_events_and_community",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Legal, healthcare, events, and community advocacy"
+ },
+ {
+  "key": "ui_volunteer_youth_volunteer",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Youth Volunteer"
+ },
+ {
+  "key": "ui_volunteer_peer_circles_youth_empowerment_mental",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Peer circles, youth empowerment, mental wellness support"
+ },
+ {
+  "key": "ui_volunteer_full_name",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Full Name"
+ },
+ {
+  "key": "ui_volunteer_e_g_kasun_fernando",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "e.g. Kasun Fernando"
+ },
+ {
+  "key": "ui_volunteer_contact_number",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Contact Number"
+ },
+ {
+  "key": "ui_volunteer_07x_xxx_xxxx",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "07X XXX XXXX"
+ },
+ {
+  "key": "ui_volunteer_national_identity_card_nic",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "National Identity Card (NIC)"
+ },
+ {
+  "key": "ui_volunteer_e_g_2000xxxxxxxx_or_xxxxxxxxxv",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "e.g. 2000XXXXXXXX or XXXXXXXXXV"
+ },
+ {
+  "key": "ui_volunteer_birth_year",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Birth Year"
+ },
+ {
+  "key": "ui_volunteer_yyyy_e_g_2002",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "YYYY (e.g. 2002)"
+ },
+ {
+  "key": "ui_volunteer_current_living_district",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Current Living District"
+ },
+ {
+  "key": "ui_volunteer_select_your_district",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "-- Select Your District --"
+ },
+ {
+  "key": "ui_volunteer_declaration_and_consent",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Declaration & Consent"
+ },
+ {
+  "key": "ui_volunteer_tet_declaration",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "TET Declaration:"
+ },
+ {
+  "key": "v_form_consent_text",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Are you willing to connect with Trans Equality Trust (TET) and commit to providing a stigma- and discrimination-free service for the transgender community?"
+ },
+ {
+  "key": "ui_volunteer_yes_i_agree",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Yes (I Agree)"
+ },
+ {
+  "key": "ui_volunteer_no",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "No"
+ },
+ {
+  "key": "v_form_btn",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Submit Volunteer Application"
+ },
+ {
+  "key": "ui_volunteer_text",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "\""
+ },
+ {
+  "key": "v_footer_quote",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Collective strength is the only path toward systemic equality. Your time is an investment in human dignity."
+ },
+ {
+  "key": "v_footer_cite",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Trans Equality Trust Sri Lanka"
+ },
+ {
+  "key": "nav_about",
+  "group": "nav",
+  "kind": "text",
+  "en": "About",
+  "si": "අප ගැන",
+  "ta": "எங்களை பற்றி"
+ },
+ {
+  "key": "nav_services",
+  "group": "nav",
+  "kind": "text",
+  "en": "Services",
+  "si": "සේවාවන්",
+  "ta": "சேவைகள்"
+ },
+ {
+  "key": "nav_projects",
+  "group": "nav",
+  "kind": "text",
+  "en": "Projects",
+  "si": "ව්‍යාපෘති",
+  "ta": "திட்டங்கள்"
+ },
+ {
+  "key": "nav_gallery",
+  "group": "nav",
+  "kind": "text",
+  "en": "Events & Gallery",
+  "si": "සිදුවීම් සහ ගැලරිය",
+  "ta": "நிகழ்வுகள் & தொகுப்பு"
+ },
+ {
+  "key": "nav_activities",
+  "group": "nav",
+  "kind": "text",
+  "en": "Activities",
+  "si": "ක්‍රියාකාරකම්",
+  "ta": "செயற்பாடுகள்"
+ },
+ {
+  "key": "nav_booking",
+  "group": "nav",
+  "kind": "text",
+  "en": "Social Enterprise",
+  "si": "සමාජ ව්‍යවසාය",
+  "ta": "சமூக நிறுவனம்"
+ },
+ {
+  "key": "nav_contact",
+  "group": "nav",
+  "kind": "text",
+  "en": "Contact Us",
+  "si": "අප අමතන්න",
+  "ta": "தொடர்புக்கு"
+ },
+ {
+  "key": "ui_nav_trans_equality_trust_logo",
+  "group": "nav",
+  "kind": "text",
+  "en": "Trans Equality Trust Logo"
+ },
+ {
+  "key": "nav_drop_services",
+  "group": "nav",
+  "kind": "text",
+  "en": "Advocacy Services",
+  "si": "නීතිමය සේවා",
+  "ta": "சட்ட சேவைகள்"
+ },
+ {
+  "key": "nav_drop_volunteer",
+  "group": "nav",
+  "kind": "text",
+  "en": "Volunteer",
+  "si": "ස්වේච්ඡා සේවය",
+  "ta": "தன்னார்வலர்"
+ },
+ {
+  "key": "btn_donate",
+  "group": "nav",
+  "kind": "text",
+  "en": "Donate",
+  "si": "ආධාර කරන්න",
+  "ta": "நன்கொடை"
+ },
+ {
+  "key": "ui_nav_toggle_menu",
+  "group": "nav",
+  "kind": "text",
+  "en": "Toggle Menu"
+ },
+ {
+  "key": "ui_nav_language",
+  "group": "nav",
+  "kind": "text",
+  "en": "Language:"
+ },
+ {
+  "key": "footer_fb_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "https://www.facebook.com/share/12G6Xq5jZ15/"
+ },
+ {
+  "key": "footer_ig_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "https://instagram.com"
+ },
+ {
+  "key": "footer_ln_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "https://linkedin.com"
+ },
+ {
+  "key": "footer_x_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "https://x.com"
+ },
+ {
+  "key": "ui_footer_trans_equality_trust_logo",
+  "group": "footer",
+  "kind": "text",
+  "en": "Trans Equality Trust Logo"
+ },
+ {
+  "key": "footer_desc",
+  "group": "footer",
+  "kind": "text",
+  "en": "Sri Lanka’s leading advocacy group protecting the rights, safety, and choice of the transgender community.",
+  "si": "සංක්‍රාන්ති ලිංගික ප්‍රජාවගේ අයිතිවාසිකම් සහ ආරක්ෂාව සුරකින ශ්‍රී ලංකාවේ ප්‍රමුඛතම සංවිධානය.",
+  "ta": "திருநங்கைகள் சமூகத்தின் உரிமைகள் மற்றும் பாதுகாப்பைப் பாதுகாக்கும் இலங்கையின் முன்னணி அமைப்பு."
+ },
+ {
+  "key": "footer_head_org",
+  "group": "footer",
+  "kind": "text",
+  "en": "Organization",
+  "si": "ආයතනය",
+  "ta": "அமைப்பு"
+ },
+ {
+  "key": "footer_nav_about",
+  "group": "footer",
+  "kind": "text",
+  "en": "About TET",
+  "seed_from": "nav_about"
+ },
+ {
+  "key": "footer_nav_services",
+  "group": "footer",
+  "kind": "text",
+  "en": "Our Services",
+  "seed_from": "nav_services"
+ },
+ {
+  "key": "footer_nav_projects",
+  "group": "footer",
+  "kind": "text",
+  "en": "Advocacy Projects",
+  "seed_from": "nav_projects"
+ },
+ {
+  "key": "footer_nav_activities",
+  "group": "footer",
+  "kind": "text",
+  "en": "Media & Field Updates",
+  "seed_from": "nav_activities"
+ },
+ {
+  "key": "footer_head_init",
+  "group": "footer",
+  "kind": "text",
+  "en": "Initiatives",
+  "si": "ක්‍රියාකාරකම්",
+  "ta": "முயற்சிகள்"
+ },
+ {
+  "key": "footer_nav_booking",
+  "group": "footer",
+  "kind": "text",
+  "en": "TET Spaces (Social Enterprise)",
+  "seed_from": "nav_booking"
+ },
+ {
+  "key": "footer_manual_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "#"
+ },
+ {
+  "key": "footer_legal_manual",
+  "group": "footer",
+  "kind": "text",
+  "en": "Legal Rights Manual",
+  "si": "නීතිමය අයිතිවාසිකම් අත්පොත",
+  "ta": "சட்ட உரிமைகள் கையேடு"
+ },
+ {
+  "key": "nav_volunteer",
+  "group": "footer",
+  "kind": "text",
+  "en": "Volunteer Registry"
+ },
+ {
+  "key": "footer_nav_contact",
+  "group": "footer",
+  "kind": "text",
+  "en": "Emergency Hotline",
+  "seed_from": "nav_contact"
+ },
+ {
+  "key": "footer_head_support",
+  "group": "footer",
+  "kind": "text",
+  "en": "Support Our Work",
+  "si": "අපට සහාය වන්න",
+  "ta": "எங்கள் பணிக்கு ஆதரவு"
+ },
+ {
+  "key": "footer_support_text",
+  "group": "footer",
+  "kind": "text",
+  "en": "Your contribution directly funds 24/7 legal aid and rehabilitation paths.",
+  "si": "ඔබගේ ආධාර සෘජුවම පැය 24 පුරා නීති ආධාර සහ පුනරුත්ථාපන කටයුතු සඳහා යෙදවේ.",
+  "ta": "உங்கள் பங்களிப்பு 24/7 சட்ட உதவி மற்றும் மறுவாழ்வு பணிகளுக்கு நேரடியாக உதவுகிறது."
+ },
+ {
+  "key": "footer_donate_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "/donate"
+ },
+ {
+  "key": "footer_btn_donate",
+  "group": "footer",
+  "kind": "text",
+  "en": "Make a Donation",
+  "seed_from": "btn_donate",
+  "si": "ආධාර කරන්න",
+  "ta": "நன்கொடை வழங்குக"
+ },
+ {
+  "key": "footer_copy",
+  "group": "footer",
+  "kind": "text",
+  "en": "Trans Equality Trust Sri Lanka.",
+  "si": "ට්‍රාන්ස් ඉක්වැලිටි ට්‍රස්ට් ශ්‍රී ලංකා.",
+  "ta": "டிரான்ஸ் ஈக்வாலிட்டி டிரஸ்ட் இலங்கை."
+ },
+ {
+  "key": "footer_privacy_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "/privacy"
+ },
+ {
+  "key": "footer_privacy",
+  "group": "footer",
+  "kind": "text",
+  "en": "Privacy Policy",
+  "si": "පුද්ගලිකත්ව ප්‍රතිපත්තිය",
+  "ta": "தனியுரிமைக் கொள்கை"
+ },
+ {
+  "key": "footer_terms_url",
+  "group": "footer",
+  "kind": "plain",
+  "en": "/terms"
+ },
+ {
+  "key": "footer_terms",
+  "group": "footer",
+  "kind": "text",
+  "en": "Terms & Conditions",
+  "si": "නියම සහ කොන්දේසි",
+  "ta": "விதிமுறைகள்"
+ },
+ {
+  "key": "ui_whatsapp_chat_on_whatsapp",
+  "group": "whatsapp",
+  "kind": "text",
+  "en": "Chat on WhatsApp"
+ },
+ {
+  "key": "ui_fontsize_text",
+  "group": "fontsize",
+  "kind": "text",
+  "en": "Text"
+ },
+ {
+  "key": "ui_logo_tet",
+  "group": "logo",
+  "kind": "text",
+  "en": "TET"
+ },
+ {
+  "key": "ui_logo_trans_equality_trust",
+  "group": "logo",
+  "kind": "text",
+  "en": "Trans Equality Trust"
+ },
+ {
+  "key": "ui_fontsize_small",
+  "group": "fontsize",
+  "kind": "text",
+  "en": "Small"
+ },
+ {
+  "key": "ui_fontsize_default",
+  "group": "fontsize",
+  "kind": "text",
+  "en": "Default"
+ },
+ {
+  "key": "ui_fontsize_large",
+  "group": "fontsize",
+  "kind": "text",
+  "en": "Large"
+ },
+ {
+  "key": "whatsapp_number",
+  "group": "whatsapp",
+  "kind": "plain",
+  "en": "94771234567"
+ },
+ {
+  "key": "whatsapp_message",
+  "group": "whatsapp",
+  "kind": "text",
+  "en": "Hello Trans Equality Trust, I would like more information."
+ },
+ {
+  "key": "stat_1_val",
+  "group": "home",
+  "kind": "text",
+  "en": "5,000+"
+ },
+ {
+  "key": "stat_1_label",
+  "group": "home",
+  "kind": "text",
+  "en": "Community Scope"
+ },
+ {
+  "key": "stat_1_desc",
+  "group": "home",
+  "kind": "text",
+  "en": "Institutional support provided across the Sri Lankan trans community."
+ },
+ {
+  "key": "stat_2_val",
+  "group": "home",
+  "kind": "text",
+  "en": "30%"
+ },
+ {
+  "key": "stat_2_label",
+  "group": "home",
+  "kind": "text",
+  "en": "Recovery Aid"
+ },
+ {
+  "key": "stat_2_desc",
+  "group": "home",
+  "kind": "text",
+  "en": "Institutional support provided across the Sri Lankan trans community."
+ },
+ {
+  "key": "stat_3_val",
+  "group": "home",
+  "kind": "text",
+  "en": "Policy"
+ },
+ {
+  "key": "stat_3_label",
+  "group": "home",
+  "kind": "text",
+  "en": "Advocacy"
+ },
+ {
+  "key": "stat_3_desc",
+  "group": "home",
+  "kind": "text",
+  "en": "Institutional support provided across the Sri Lankan trans community."
+ },
+ {
+  "key": "impact_cards",
+  "group": "home",
+  "kind": "json",
+  "en": "[{\"cat\": {\"en\": \"Legal\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Human Rights Appeal\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1589829545856-d10d557cf95f\"}, {\"cat\": {\"en\": \"Policy\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Consortium Meeting\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1517048676732-d65bc937f952\"}, {\"cat\": {\"en\": \"Community\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Safe-Space Unity\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1523240795612-9a054b0db644\"}, {\"cat\": {\"en\": \"Health\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Recovery Pathways\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8\"}, {\"cat\": {\"en\": \"Education\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Vocational Skills\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1522202176988-66273c2fd55f\"}, {\"cat\": {\"en\": \"Inclusion\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Workplace Training\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1521737604893-d14cc237f11d\"}, {\"cat\": {\"en\": \"Advocacy\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Global Representation\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1450101499163-c8848c66ca85\"}, {\"cat\": {\"en\": \"Unity\", \"si\": \"\", \"ta\": \"\"}, \"title\": {\"en\": \"Community Support\", \"si\": \"\", \"ta\": \"\"}, \"image\": \"https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8\"}]"
+ },
+ {
+  "key": "about_value_1_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Inclusion"
+ },
+ {
+  "key": "about_value_1_text",
+  "group": "about",
+  "kind": "text",
+  "en": "Ensuring that every individual, regardless of their background, has a seat at the table."
+ },
+ {
+  "key": "about_value_2_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Integrity"
+ },
+ {
+  "key": "about_value_2_text",
+  "group": "about",
+  "kind": "text",
+  "en": "Operating with transparency and honesty in all our advocacy and business efforts."
+ },
+ {
+  "key": "about_value_3_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Resilience"
+ },
+ {
+  "key": "about_value_3_text",
+  "group": "about",
+  "kind": "text",
+  "en": "Standing firm in the face of systemic challenges to secure a better tomorrow."
+ },
+ {
+  "key": "about_value_4_title",
+  "group": "about",
+  "kind": "text",
+  "en": "Empowerment"
+ },
+ {
+  "key": "about_value_4_text",
+  "group": "about",
+  "kind": "text",
+  "en": "Providing the tools and resources necessary for our community to lead independent lives."
+ },
+ {
+  "key": "s_proc_1_title",
+  "group": "services",
+  "kind": "text",
+  "en": "Initial Contact & Triage"
+ },
+ {
+  "key": "s_proc_1_text",
+  "group": "services",
+  "kind": "text",
+  "en": "Direct intake via our confidential crisis channel or referral network."
+ },
+ {
+  "key": "s_proc_2_title",
+  "group": "services",
+  "kind": "text",
+  "en": "Action Plan & Case Assignment"
+ },
+ {
+  "key": "s_proc_2_text",
+  "group": "services",
+  "kind": "text",
+  "en": "Assigning qualified legal counsel, social workers, and clinical liaisons."
+ },
+ {
+  "key": "s_proc_3_title",
+  "group": "services",
+  "kind": "text",
+  "en": "Sustained Integration & Care"
+ },
+ {
+  "key": "s_proc_3_text",
+  "group": "services",
+  "kind": "text",
+  "en": "Ongoing vocational training, housing support, and recovery tracking."
+ },
+ {
+  "key": "ui_news_read_more",
+  "group": "news",
+  "kind": "text",
+  "en": "Read more:"
+ },
+ {
+  "key": "ui_gallery_share_suffix",
+  "group": "gallery",
+  "kind": "text",
+  "en": "Trans Equality Trust Sri Lanka"
+ },
+ {
+  "key": "se_hall_name",
+  "group": "booking",
+  "kind": "text",
+  "en": "TET Main Event Hall & Venue"
+ },
+ {
+  "key": "ui_booking_error",
+  "group": "booking",
+  "kind": "text",
+  "en": "Something went wrong. Please check details and try again."
+ },
+ {
+  "key": "se_care_1_title",
+  "group": "booking",
+  "kind": "text",
+  "en": "Daytime Child Supervision"
+ },
+ {
+  "key": "se_care_1_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "Secure, creative, and joyful care for children while parents are at work. Includes educational playtime and nutritious snacks."
+ },
+ {
+  "key": "se_care_1_icon",
+  "group": "booking",
+  "kind": "text",
+  "en": "🎨"
+ },
+ {
+  "key": "se_care_1_tag",
+  "group": "booking",
+  "kind": "text",
+  "en": "Child Day Care"
+ },
+ {
+  "key": "se_care_2_title",
+  "group": "booking",
+  "kind": "text",
+  "en": "Senior & Elder Respite Care"
+ },
+ {
+  "key": "se_care_2_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "Companionship, gentle recreational exercises, and medication assistance for elders who need daytime attention in a respectful space."
+ },
+ {
+  "key": "se_care_2_icon",
+  "group": "booking",
+  "kind": "text",
+  "en": "👵"
+ },
+ {
+  "key": "se_care_2_tag",
+  "group": "booking",
+  "kind": "text",
+  "en": "Elder Care"
+ },
+ {
+  "key": "se_care_3_title",
+  "group": "booking",
+  "kind": "text",
+  "en": "Certified Community Caregivers"
+ },
+ {
+  "key": "se_care_3_desc",
+  "group": "booking",
+  "kind": "text",
+  "en": "Every caregiver on our team has completed verified first-aid, nutrition, and respectful caregiving certifications."
+ },
+ {
+  "key": "se_care_3_icon",
+  "group": "booking",
+  "kind": "text",
+  "en": "❤️"
+ },
+ {
+  "key": "se_care_3_tag",
+  "group": "booking",
+  "kind": "text",
+  "en": "Certified Team"
+ },
+ {
+  "key": "ui_booking_order_request",
+  "group": "booking",
+  "kind": "text",
+  "en": "Product Order Request"
+ },
+ {
+  "key": "ui_booking_venue_inquiry",
+  "group": "booking",
+  "kind": "text",
+  "en": "Venue Reservation Inquiry"
+ },
+ {
+  "key": "ui_booking_notes_label_order",
+  "group": "booking",
+  "kind": "text",
+  "en": "Delivery Address / Special Notes"
+ },
+ {
+  "key": "ui_booking_notes_label_venue",
+  "group": "booking",
+  "kind": "text",
+  "en": "Event Date & Requirements"
+ },
+ {
+  "key": "ui_booking_notes_placeholder_order",
+  "group": "booking",
+  "kind": "text",
+  "en": "Islandwide delivery address..."
+ },
+ {
+  "key": "ui_booking_notes_placeholder_venue",
+  "group": "booking",
+  "kind": "text",
+  "en": "Estimated guests, audio/visual requirements..."
+ },
+ {
+  "key": "ui_booking_sending",
+  "group": "booking",
+  "kind": "text",
+  "en": "Sending Request..."
+ },
+ {
+  "key": "ui_booking_submit",
+  "group": "booking",
+  "kind": "text",
+  "en": "Submit Commercial Request"
+ },
+ {
+  "key": "ui_contact_error",
+  "group": "contact",
+  "kind": "text",
+  "en": "Something went wrong. Please check your connection and try again."
+ },
+ {
+  "key": "ct_g1_label",
+  "group": "contact",
+  "kind": "text",
+  "en": "General Inquiries"
+ },
+ {
+  "key": "ct_g1_val",
+  "group": "contact",
+  "kind": "text",
+  "en": "info@transequalitytrust.lk"
+ },
+ {
+  "key": "ct_g1_sub",
+  "group": "contact",
+  "kind": "text",
+  "en": "For institutional partnerships."
+ },
+ {
+  "key": "ct_g2_label",
+  "group": "contact",
+  "kind": "text",
+  "en": "Media & Press"
+ },
+ {
+  "key": "ct_g2_val",
+  "group": "contact",
+  "kind": "text",
+  "en": "media@transequalitytrust.lk"
+ },
+ {
+  "key": "ct_g2_sub",
+  "group": "contact",
+  "kind": "text",
+  "en": "Official statements & interviews."
+ },
+ {
+  "key": "ct_g3_label",
+  "group": "contact",
+  "kind": "text",
+  "en": "Office Registry"
+ },
+ {
+  "key": "ct_g3_val",
+  "group": "contact",
+  "kind": "text",
+  "en": "Colombo 05, Sri Lanka"
+ },
+ {
+  "key": "ct_g3_sub",
+  "group": "contact",
+  "kind": "text",
+  "en": "Central District HQ."
+ },
+ {
+  "key": "dn_amount_presets",
+  "group": "donate",
+  "kind": "plain",
+  "en": "1000, 5000, 10000, 25000"
+ },
+ {
+  "key": "dn_default_amount",
+  "group": "donate",
+  "kind": "plain",
+  "en": "5000"
+ },
+ {
+  "key": "ui_donate_anonymous_donor",
+  "group": "donate",
+  "kind": "text",
+  "en": "Anonymous Donor"
+ },
+ {
+  "key": "ui_donate_error",
+  "group": "donate",
+  "kind": "text",
+  "en": "Something went wrong while recording your donation. Please try again."
+ },
+ {
+  "key": "ui_donate_processing",
+  "group": "donate",
+  "kind": "text",
+  "en": "Processing..."
+ },
+ {
+  "key": "dn_desk_btn_suffix",
+  "group": "donate",
+  "kind": "text",
+  "en": "Now",
+  "si": " ",
+  "ta": " "
+ },
+ {
+  "key": "dn_i1_val",
+  "group": "donate",
+  "kind": "text",
+  "en": "40%"
+ },
+ {
+  "key": "dn_i1_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Legal Aid & Defense"
+ },
+ {
+  "key": "dn_i1_desc",
+  "group": "donate",
+  "kind": "text",
+  "en": "Direct legal representation for community members facing arbitrary detentions and police harassment."
+ },
+ {
+  "key": "dn_i2_val",
+  "group": "donate",
+  "kind": "text",
+  "en": "35%"
+ },
+ {
+  "key": "dn_i2_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Healthcare & Safe Housing"
+ },
+ {
+  "key": "dn_i2_desc",
+  "group": "donate",
+  "kind": "text",
+  "en": "Affirmative medical consultations, hormone therapy support, and emergency crisis shelter beds."
+ },
+ {
+  "key": "dn_i3_val",
+  "group": "donate",
+  "kind": "text",
+  "en": "25%"
+ },
+ {
+  "key": "dn_i3_title",
+  "group": "donate",
+  "kind": "text",
+  "en": "Systemic Advocacy"
+ },
+ {
+  "key": "dn_i3_desc",
+  "group": "donate",
+  "kind": "text",
+  "en": "Constitutional reform drafting, police sensitization workshops, and national awareness programs."
+ },
+ {
+  "key": "dn_bank_name",
+  "group": "donate",
+  "kind": "plain",
+  "en": "Commercial Bank of Ceylon"
+ },
+ {
+  "key": "dn_bank_account_name",
+  "group": "donate",
+  "kind": "plain",
+  "en": "Trans Equality Trust"
+ },
+ {
+  "key": "dn_bank_account_number",
+  "group": "donate",
+  "kind": "plain",
+  "en": "8009123456"
+ },
+ {
+  "key": "dn_bank_branch",
+  "group": "donate",
+  "kind": "plain",
+  "en": "Colombo Main Branch"
+ },
+ {
+  "key": "dn_bank_swift",
+  "group": "donate",
+  "kind": "plain",
+  "en": "CCEYLKX"
+ },
+ {
+  "key": "v_youth_1_icon",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "🤝"
+ },
+ {
+  "key": "v_youth_1_tag",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Community"
+ },
+ {
+  "key": "v_youth_1_title",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Safe Youth Circles"
+ },
+ {
+  "key": "v_youth_1_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Confidential peer-support sessions and safe spaces where young individuals can share experiences, connect, and receive peer validation."
+ },
+ {
+  "key": "v_youth_2_icon",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "🧠"
+ },
+ {
+  "key": "v_youth_2_tag",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Wellbeing"
+ },
+ {
+  "key": "v_youth_2_title",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Affirmative Mental Health"
+ },
+ {
+  "key": "v_youth_2_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Free, trauma-informed counseling and psycho-social support by certified professionals trained in transgender youth care."
+ },
+ {
+  "key": "v_youth_3_icon",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "💻"
+ },
+ {
+  "key": "v_youth_3_tag",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Growth"
+ },
+ {
+  "key": "v_youth_3_title",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Skill Building & Tech Literacy"
+ },
+ {
+  "key": "v_youth_3_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Vocational workshops, computer literacy, digital advocacy training, and career pathway mentoring for youth independence."
+ },
+ {
+  "key": "v_youth_4_icon",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "🛡️"
+ },
+ {
+  "key": "v_youth_4_tag",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Protection"
+ },
+ {
+  "key": "v_youth_4_title",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Emergency Shelter & Legal Aid"
+ },
+ {
+  "key": "v_youth_4_desc",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Rapid response aid for displaced youth, including emergency housing support, crisis kits, and guidance on legal documentation changes."
+ },
+ {
+  "key": "v_districts",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Colombo, Gampaha, Kalutara, Kandy, Matale, Nuwara Eliya, Galle, Matara, Hambantota, Jaffna, Kilinochchi, Mannar, Vavuniya, Mullaitivu, Batticaloa, Ampara, Trincomalee, Kurunegala, Puttalam, Anuradhapura, Polonnaruwa, Badulla, Monaragala, Ratnapura, Kegalle"
+ },
+ {
+  "key": "ui_volunteer_consent_error",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "You must agree to provide a stigma and discrimination-free service to proceed."
+ },
+ {
+  "key": "ui_volunteer_submit_failed",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Failed to submit details. Please try again."
+ },
+ {
+  "key": "ui_volunteer_error",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Something went wrong. Please try again later."
+ },
+ {
+  "key": "ui_volunteer_submitting",
+  "group": "volunteer",
+  "kind": "text",
+  "en": "Submitting to Admin..."
+ },
+ {
+  "key": "seo_home_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust (TET) | Protecting Transgender Rights in Sri Lanka"
+ },
+ {
+  "key": "seo_home_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Dedicated to protecting the safety, legal rights, and well-being of over 5,000 transgender individuals in Sri Lanka through systemic advocacy, crisis aid, and social enterprise."
+ },
+ {
+  "key": "seo_home_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "Transgender rights Sri Lanka, Trans Equality Trust, TET Sri Lanka, LGBTQ+ support Colombo, Legal aid for trans community"
+ },
+ {
+  "key": "seo_home_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust (TET) | Sri Lanka"
+ },
+ {
+  "key": "seo_home_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Protecting the rights, safety, and well-being of the transgender community through advocacy and support."
+ },
+ {
+  "key": "seo_home_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_home_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Advocacy"
+ },
+ {
+  "key": "seo_home_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust (TET) | Sri Lanka"
+ },
+ {
+  "key": "seo_home_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Protecting the rights, safety, and well-being of the transgender community."
+ },
+ {
+  "key": "seo_home_tw_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_about_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "About Us | History, Vision & Mission"
+ },
+ {
+  "key": "seo_about_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Learn about Trans Equality Trust (TET), our leadership under Kasuni Mayadunna, our core values, and our mission to secure legal and social inclusion for transgender individuals in Sri Lanka."
+ },
+ {
+  "key": "seo_about_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "About Trans Equality Trust, Kasuni Mayadunna TET, Transgender advocacy organization Sri Lanka, TET core values and mission"
+ },
+ {
+  "key": "seo_about_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "About Us | Trans Equality Trust Sri Lanka"
+ },
+ {
+  "key": "seo_about_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Empowering the transgender community through economic opportunities, legislative advocacy, and social support."
+ },
+ {
+  "key": "seo_about_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_about_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Leadership and Team"
+ },
+ {
+  "key": "seo_about_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "About Us | Trans Equality Trust"
+ },
+ {
+  "key": "seo_about_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Empowering the transgender community through economic opportunities and advocacy."
+ },
+ {
+  "key": "seo_services_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Our Services | Legal Aid, Healthcare & Crisis Support"
+ },
+ {
+  "key": "seo_services_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Explore TET's essential services including 24/7 legal defense, affirmative medical healthcare access, trauma-informed counseling, and emergency crisis intervention for the transgender community in Sri Lanka."
+ },
+ {
+  "key": "seo_services_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "Transgender healthcare Sri Lanka, Legal aid for trans community, Mental health counseling Colombo, Emergency crisis intervention TET, Transgender support services Sri Lanka"
+ },
+ {
+  "key": "seo_services_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Our Services | Trans Equality Trust"
+ },
+ {
+  "key": "seo_services_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Comprehensive support infrastructure: legal defense, clinical care, safe housing, and emergency response."
+ },
+ {
+  "key": "seo_services_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_services_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Support Services"
+ },
+ {
+  "key": "seo_services_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Our Services | Trans Equality Trust"
+ },
+ {
+  "key": "seo_services_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Legal defense, healthcare access, and emergency crisis support."
+ },
+ {
+  "key": "seo_services_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Providing 24/7 legal aid, clinical healthcare access, mental health counseling, and crisis intervention."
+ },
+ {
+  "key": "seo_projects_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Strategic Projects & Advocacy Campaigns"
+ },
+ {
+  "key": "seo_projects_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Explore TET's strategic initiatives driving systemic change, policy reform, economic empowerment, and emergency housing for the transgender community in Sri Lanka."
+ },
+ {
+  "key": "seo_projects_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET projects Sri Lanka, Transgender policy advocacy consortium, Digital literacy employment programs trans youth, Safe spaces crisis aid Sri Lanka"
+ },
+ {
+  "key": "seo_projects_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Strategic Projects & Campaigns | Trans Equality Trust"
+ },
+ {
+  "key": "seo_projects_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Driving long-term systemic change, policy evolution, and economic independence."
+ },
+ {
+  "key": "seo_projects_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_projects_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Projects and Initiatives"
+ },
+ {
+  "key": "seo_projects_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Strategic Projects | Trans Equality Trust"
+ },
+ {
+  "key": "seo_projects_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Driving systemic change, policy reform, and economic empowerment."
+ },
+ {
+  "key": "seo_projects_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Strategic Projects"
+ },
+ {
+  "key": "seo_projects_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Systemic advocacy campaigns and community development projects by Trans Equality Trust."
+ },
+ {
+  "key": "seo_news_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Daily Activities & Field Reports"
+ },
+ {
+  "key": "seo_news_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Read real-time updates, field visits, community support sessions, and grassroots interventions happening across Sri Lanka by Trans Equality Trust."
+ },
+ {
+  "key": "seo_news_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET news and activities, Transgender community field reports Sri Lanka, Grassroots advocacy updates Colombo, Trans Equality Trust blog"
+ },
+ {
+  "key": "seo_news_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Daily Activities & Field Reports | Trans Equality Trust"
+ },
+ {
+  "key": "seo_news_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Real-time updates, field visits, and community support sessions across Sri Lanka."
+ },
+ {
+  "key": "seo_news_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_news_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Field Activities"
+ },
+ {
+  "key": "seo_news_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Daily Activities | Trans Equality Trust"
+ },
+ {
+  "key": "seo_news_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Real-time field updates and community interventions."
+ },
+ {
+  "key": "seo_news_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET Daily Activities & Field Reports"
+ },
+ {
+  "key": "seo_news_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Real-time field updates and grassroots interventions by Trans Equality Trust."
+ },
+ {
+  "key": "seo_gallery_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Events & Community Gallery"
+ },
+ {
+  "key": "seo_gallery_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Explore visual archives, national symposiums, peer support retreats, and grassroots community gatherings hosted by Trans Equality Trust across Sri Lanka."
+ },
+ {
+  "key": "seo_gallery_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET events gallery, Transgender community symposium Sri Lanka, LGBTQ+ events Colombo, Trans Equality Trust photo gallery"
+ },
+ {
+  "key": "seo_gallery_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Events & Community Gallery | Trans Equality Trust"
+ },
+ {
+  "key": "seo_gallery_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Explore ongoing gatherings, workshops, and milestones from across Sri Lanka."
+ },
+ {
+  "key": "seo_gallery_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_gallery_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Community Gallery"
+ },
+ {
+  "key": "seo_gallery_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Events & Gallery | Trans Equality Trust"
+ },
+ {
+  "key": "seo_gallery_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Explore visual archives and community gatherings."
+ },
+ {
+  "key": "seo_gallery_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Events & Community Gallery"
+ },
+ {
+  "key": "seo_gallery_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Visual storytelling and community events documentation by Trans Equality Trust."
+ },
+ {
+  "key": "seo_booking_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Social Enterprise | Hall Booking, Daily Care & Wellness Products"
+ },
+ {
+  "key": "seo_booking_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Support TET's community mission. Book our inclusive event spaces, reserve daily care center services, or order certified, discreetly packaged safe-sex wellness products."
+ },
+ {
+  "key": "seo_booking_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET social enterprise Sri Lanka, Event hall booking Colombo, Daily care center services, Buy condoms online Sri Lanka TET, Community wellness kits"
+ },
+ {
+  "key": "seo_booking_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Social Enterprise | Trans Equality Trust"
+ },
+ {
+  "key": "seo_booking_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "100% of proceeds generated from hall bookings, daily care, and product sales fund community protection missions."
+ },
+ {
+  "key": "seo_booking_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_booking_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET Social Enterprise & Venue Booking"
+ },
+ {
+  "key": "seo_booking_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Social Enterprise | Trans Equality Trust"
+ },
+ {
+  "key": "seo_booking_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Hall bookings, daily care center, and safe wellness products."
+ },
+ {
+  "key": "seo_booking_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET Social Enterprises"
+ },
+ {
+  "key": "seo_booking_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Purpose-driven businesses funding community safety missions, hall rentals, and wellness products."
+ },
+ {
+  "key": "seo_contact_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Contact Us & 24/7 Crisis Hotline | Trans Equality Trust"
+ },
+ {
+  "key": "seo_contact_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Get in touch with Trans Equality Trust. Access our 24/7 emergency crisis hotline for urgent safety assistance, legal aid, media inquiries, or institutional partnerships in Colombo, Sri Lanka."
+ },
+ {
+  "key": "seo_contact_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "Contact Trans Equality Trust, TET crisis hotline Sri Lanka, Transgender emergency legal aid Colombo, TET office address Sri Lanka, LGBTQ+ support hotline Sri Lanka"
+ },
+ {
+  "key": "seo_contact_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Contact Us & 24/7 Crisis Hotline | Trans Equality Trust"
+ },
+ {
+  "key": "seo_contact_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Whether seeking emergency legal aid, institutional partnership, or making an inquiry, our desk is ready."
+ },
+ {
+  "key": "seo_contact_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_contact_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Contact and Support Desk"
+ },
+ {
+  "key": "seo_contact_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Contact Us | Trans Equality Trust"
+ },
+ {
+  "key": "seo_contact_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Access our 24/7 emergency crisis hotline and administrative desk."
+ },
+ {
+  "key": "seo_contact_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Contact Trans Equality Trust"
+ },
+ {
+  "key": "seo_contact_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Official communication and 24/7 emergency response channels for Trans Equality Trust."
+ },
+ {
+  "key": "seo_donate_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Donate & Support Equality | Trans Equality Trust"
+ },
+ {
+  "key": "seo_donate_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Invest in equality, legal aid, healthcare access, and safety for transgender individuals in Sri Lanka. 100% of contributions are audited and securely allocated."
+ },
+ {
+  "key": "seo_donate_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "Donate to transgender rights Sri Lanka, Support Trans Equality Trust, TET donation desk, Fund LGBTQ+ legal defense Sri Lanka, Secure NGO donation LKR"
+ },
+ {
+  "key": "seo_donate_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Donate to Trans Equality Trust | Invest in Equality & Dignity"
+ },
+ {
+  "key": "seo_donate_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Your financial support directly enables 24/7 legal aid, healthcare access, and emergency shelter."
+ },
+ {
+  "key": "seo_donate_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_donate_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Support Trans Equality Trust - Donation Desk"
+ },
+ {
+  "key": "seo_donate_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Donate | Trans Equality Trust"
+ },
+ {
+  "key": "seo_donate_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Invest in equality, legal aid, and safety for transgender individuals."
+ },
+ {
+  "key": "seo_donate_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Donate to Trans Equality Trust"
+ },
+ {
+  "key": "seo_donate_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Secure contribution desk supporting legal aid, healthcare access, and crisis shelter for transgender individuals in Sri Lanka."
+ },
+ {
+  "key": "seo_volunteer_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Volunteer & Youth Empowerment | Trans Equality Trust"
+ },
+ {
+  "key": "seo_volunteer_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Join TET's community network as a volunteer or youth peer advocate. Help build a stigma-free Sri Lanka through advocacy, peer circles, and community support."
+ },
+ {
+  "key": "seo_volunteer_keywords",
+  "group": "seo",
+  "kind": "text",
+  "en": "Volunteer Sri Lanka NGO, Trans Equality Trust volunteer application, Youth peer support volunteer Colombo, LGBTQ+ advocacy volunteer opportunities Sri Lanka"
+ },
+ {
+  "key": "seo_volunteer_og_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Volunteer & Youth Empowerment | Trans Equality Trust"
+ },
+ {
+  "key": "seo_volunteer_og_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Lend your voice, skills, and empathy to help build a stigma-free Sri Lanka."
+ },
+ {
+  "key": "seo_volunteer_og_image",
+  "group": "seo",
+  "kind": "image",
+  "en": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80"
+ },
+ {
+  "key": "seo_volunteer_og_image_alt",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust Volunteer Community"
+ },
+ {
+  "key": "seo_volunteer_tw_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Volunteer | Trans Equality Trust"
+ },
+ {
+  "key": "seo_volunteer_tw_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Join our volunteer network and help shape a stigma-free future."
+ },
+ {
+  "key": "seo_volunteer_ld_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Volunteer Application Desk"
+ },
+ {
+  "key": "seo_volunteer_ld_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Application portal for general and youth volunteering opportunities with Trans Equality Trust."
+ },
+ {
+  "key": "seo_default_title",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust (TET) | Sri Lanka"
+ },
+ {
+  "key": "seo_default_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Protecting the rights, safety, and well-being of the transgender community."
+ },
+ {
+  "key": "seo_services_ld_type",
+  "group": "seo",
+  "kind": "text",
+  "en": "Transgender Community Advocacy, Legal Aid, and Healthcare Support"
+ },
+ {
+  "key": "seo_services_ld_catalog_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Support Services"
+ },
+ {
+  "key": "seo_org_phone",
+  "group": "seo",
+  "kind": "plain",
+  "en": "+94-11-234-5678"
+ },
+ {
+  "key": "seo_org_email",
+  "group": "seo",
+  "kind": "plain",
+  "en": "info@transequalitytrust.lk"
+ },
+ {
+  "key": "seo_contact_ld_type",
+  "group": "seo",
+  "kind": "text",
+  "en": "Emergency Crisis Support"
+ },
+ {
+  "key": "seo_languages",
+  "group": "seo",
+  "kind": "text",
+  "en": "English, Sinhala, Tamil"
+ },
+ {
+  "key": "seo_site_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Trans Equality Trust"
+ },
+ {
+  "key": "seo_site_url",
+  "group": "seo",
+  "kind": "plain",
+  "en": "https://transequalitytrust.lk"
+ },
+ {
+  "key": "seo_locale",
+  "group": "seo",
+  "kind": "plain",
+  "en": "en_LK"
+ },
+ {
+  "key": "seo_org_alt_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "TET Sri Lanka"
+ },
+ {
+  "key": "seo_org_logo_url",
+  "group": "seo",
+  "kind": "plain",
+  "en": "https://transequalitytrust.lk/logo.png"
+ },
+ {
+  "key": "seo_org_description",
+  "group": "seo",
+  "kind": "text",
+  "en": "Protecting the rights, safety, and well-being of the transgender community in Sri Lanka."
+ },
+ {
+  "key": "seo_org_locality",
+  "group": "seo",
+  "kind": "text",
+  "en": "Colombo 05"
+ },
+ {
+  "key": "seo_org_country",
+  "group": "seo",
+  "kind": "plain",
+  "en": "LK"
+ },
+ {
+  "key": "seo_org_city",
+  "group": "seo",
+  "kind": "text",
+  "en": "Colombo"
+ },
+ {
+  "key": "seo_org_country_name",
+  "group": "seo",
+  "kind": "text",
+  "en": "Sri Lanka"
+ },
+ {
+  "key": "seo_breadcrumb_home",
+  "group": "seo",
+  "kind": "text",
+  "en": "Home"
+ },
+ {
+  "key": "seo_about_breadcrumb",
+  "group": "seo",
+  "kind": "text",
+  "en": "About Us"
+ },
+ {
+  "key": "se_hall_btn_url",
+  "group": "booking",
+  "kind": "plain",
+  "en": "/contact?subject=HallBooking"
+ },
+ {
+  "key": "se_prod_btn_url",
+  "group": "booking",
+  "kind": "plain",
+  "en": "/contact?subject=BulkCondomOrders"
+ },
+ {
+  "key": "view_journal_url",
+  "group": "home",
+  "kind": "plain",
+  "en": "/news"
+ },
+ {
+  "key": "nav_donate_url",
+  "group": "nav",
+  "kind": "plain",
+  "en": "/donate"
+ },
+ {
+  "key": "btn_request_url",
+  "group": "services",
+  "kind": "plain",
+  "en": "/contact"
+ },
+ {
+  "key": "cs_badge",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "Launching Soon"
+ },
+ {
+  "key": "cs_title_1",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "Something beautiful"
+ },
+ {
+  "key": "cs_title_2",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "is on its way."
+ },
+ {
+  "key": "cs_message",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "We are building a new home for Trans Equality Trust — a place to find support, advocacy and community across Sri Lanka. Until then, our team is still here for you."
+ },
+ {
+  "key": "cs_contact_label",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "Need help right now?"
+ },
+ {
+  "key": "cs_contact_email",
+  "group": "comingsoon",
+  "kind": "plain",
+  "en": "info@transequalitytrust.lk"
+ },
+ {
+  "key": "cs_contact_phone",
+  "group": "comingsoon",
+  "kind": "plain",
+  "en": "+94 11 234 5678"
+ },
+ {
+  "key": "seo_comingsoon_title",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "Coming Soon | Trans Equality Trust"
+ },
+ {
+  "key": "seo_comingsoon_description",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "The new Trans Equality Trust website is launching soon. Protecting the rights, safety, and well-being of the transgender community in Sri Lanka."
+ },
+ {
+  "key": "ui_preview_banner",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "Preview mode — visitors currently see the Coming Soon page."
+ },
+ {
+  "key": "ui_preview_exit",
+  "group": "comingsoon",
+  "kind": "text",
+  "en": "Exit preview"
+ }
+]

@@ -81,7 +81,7 @@ class ManageContactPage extends Component
 
         // 2. Save Form Image
         if ($this->form_image) {
-            $path = $this->form_image->store('contact', 'public');
+            $path = \App\Support\Media::store($this->form_image, 'contact');
             Setting::updateOrCreate(
                 ['key' => 'ct_form_img'],
                 ['value' => $path]
