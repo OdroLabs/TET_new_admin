@@ -1,5 +1,5 @@
-<div class="p-8 lg:p-12 bg-[#FDFCF9] min-h-screen">
-    <header class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+<div class="h-full overflow-y-auto p-8 lg:p-12 bg-[#FDFCF9] scroll-smooth pb-24">
+    <header class="mb-8 flex flex-col md:flex-row md:items-center md:justify-between gap-4 flex-shrink-0">
         <div>
             <h2 class="font-serif text-3xl font-bold text-[#1A365D]">Products Catalog</h2>
             <p class="text-slate-400 text-xs font-semibold uppercase tracking-widest mt-1">Sexual Health &amp; Wellness Products Enterprise</p>
@@ -19,7 +19,6 @@
         </div>
     @endif
 
-    <!-- ACTIVE FORM (CREATE / EDIT) -->
     @if($editingId)
         <div class="mb-10 p-6 md:p-8 bg-white rounded-3xl border border-pink-200 shadow-md space-y-6">
             <div class="flex items-center justify-between border-b border-pink-100 pb-3">
@@ -29,7 +28,6 @@
                 <button type="button" wire:click="$set('editingId', null)" class="text-xs text-slate-400 hover:text-slate-600 font-bold cursor-pointer">✕ Cancel</button>
             </div>
 
-            <!-- Title -->
             <div class="space-y-2">
                 <label class="text-[9px] font-black text-[#1A365D] uppercase tracking-widest block">Product Title</label>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
@@ -40,7 +38,6 @@
                 @error('productState.title.en') <span class="text-[10px] text-red-500 font-bold">{{ $message }}</span> @enderror
             </div>
 
-            <!-- Price, Currency, Specs, Badge, Icon -->
             <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
                 <div>
                     <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest block mb-1">Price</label>
@@ -65,7 +62,6 @@
                 </div>
             </div>
 
-            <!-- Description -->
             <div class="space-y-2">
                 <label class="text-[9px] font-black text-slate-400 uppercase tracking-widest block">Description</label>
                 <div class="space-y-2">
@@ -75,7 +71,6 @@
                 </div>
             </div>
 
-            <!-- Photo Upload & Status -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2 border-t border-slate-100">
                 <div>
                     <label class="text-[9px] font-bold uppercase text-slate-400 block mb-1">Product Photo (Optional)</label>
@@ -106,7 +101,6 @@
                 </label>
             </div>
 
-            <!-- SUBMIT BUTTON WITH SAFEGUARD -->
             <button 
                 type="button" 
                 wire:click="saveProduct" 
@@ -127,10 +121,8 @@
         </div>
     @endif
 
-    <!-- PRODUCTS GRID -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         @foreach($this->products as $prod)
-            <!-- ✅ CRUCIAL FIX: Added wire:key to prevent DOM morphing glitches -->
             <div wire:key="prod-{{ $prod->id }}" class="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm flex flex-col justify-between space-y-4">
                 <div>
                     <div class="flex items-center justify-between mb-3">
@@ -143,7 +135,7 @@
                     </div>
                     
                     @if($prod->image)
-                        <img src="{{ \App\Support\Media::url($prod->image) }}" class="w-full h-32 object-cover rounded-2xl mb-3 border border-slate-100">
+                        <img src="{{ \App\Support\Media::url($prod->image) }}" class="w-full h-36 object-cover rounded-2xl mb-3 border border-slate-100">
                     @endif
 
                     <h3 class="font-serif text-lg font-bold text-[#1A365D] mb-1">
@@ -161,7 +153,6 @@
                             {{ $prod->currency }} {{ number_format($prod->price, 2) }}
                         </span>
                         
-                        <!-- ✅ CRUCIAL FIX: Clickable toggle availability button -->
                         <button 
                             type="button" 
                             wire:click="toggleAvailability({{ $prod->id }})" 
